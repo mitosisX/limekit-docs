@@ -1,8 +1,8 @@
-Button
+===========
+ListBox
 ===========
 
-.. _installation:
+Using a ListBox
+-------------------
 
-Installation
-------------
 To use Lumache, first install it using pip:

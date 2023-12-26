@@ -1,7 +1,6 @@
-Button
-===========
-
-.. _installation:
+============
+DatePicker
+============
 
 Installation
 ------------

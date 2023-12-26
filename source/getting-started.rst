@@ -12,31 +12,45 @@
 What's Limekit
 ==============
 
-Pyarmor is a command-line tool designed for obfuscating Python scripts, binding obfuscated scripts to specific machines, and setting expiration dates for obfuscated scripts.
+Limekit is framework for building desktop applications using the lua language without the need for HTML and CSS. By using Limekit, this allows you to maintain one lua codebase and create cross-platform apps that work on Windows, macOS, and Linux.
 
 Key Features:
 
-- **Seamless Replacement**: Obfuscated scripts remain as standard `.py` files, allowing them to seamlessly replace the original Python scripts in most cases.
-- **Balanced Obfuscation**: Offers multiple ways to obfuscate scripts to balance security and performance.
-- **Irreversible Obfuscation**: Renames functions, methods, classes, variables, and arguments.
-- **C Function Conversion**: Converts some Python functions to C functions and compiles them into machine instructions using high optimization options for irreversible obfuscation.
-- **Script Binding**: Binds obfuscated scripts to specific machines or sets expiration dates for obfuscated scripts.
-- **Themida Protection**: Protects obfuscated scripts using Themida (Windows only).
+- **Modern UI**: Limekit allows developers to craft beautiful UI's with dark and light modes available.
+- **Simplicity**: One of the notable features of Limekit is it's ability to create a working program in under 2 lines of code as shown below.
 
-Installation from PyPI
+    .. code-block:: lua
+        :linenos:
+
+        local window = Window{title='Limekit app', icon=images('app.png')}
+        window:show()
+
+    - This is basically enough for Limekit to run your program ;-)
+
+    
+- **No C, C++ or python knowledge**: You don't need to know any python, C or C++ to develop programs in Limekit, just lua
+- **Cross-platform**: Run the same code base in Windows, Linux and macOS
+- **C Function Conversion**: Converts some Python functions to C functions and compiles them into machine instructions using high optimization options for irreversible obfuscation.
+- **Free**: The framework is free to use
+
+Installing Python
 ======================
 
-Pyarmor_ packages are published on the PyPI_. The preferred tool for installing packages from PyPI_ is :command:`pip`. This tool is provided with all modern versions of Python.
+The Limekit framework is built in Python 3.10, so you'll need to have Python 3.10 installed to run your code with it. Follow the tutorial to get Python 3.10 installed on your OS.
 
-On Linux or MacOS, you should open your terminal and run the following command::
+.. note::
+    This guide is for those who haven't delved into Python before and are installing it for the very first time.
 
-    $ pip install -U pyarmor
+Windows
+----------
 
-On Windows, you should open Command Prompt (:kbd:`Win-r` and type :command:`cmd`) and run the same command:
+- Installing python on Windows is pretty straight forward. Simply visit `python's website <https://python.org/>`_ to download for your system
 
-.. code-block:: doscon
+Once the installation is complete, open your terminal (Comamnd Prompt or PowerShell) and type the following command::
 
-    C:\> pip install -U pyarmor
+    $ python
+
+If you get a python console in form of ``>>>``, you are good to go! 😊
 
 After installation, type :command:`pyarmor --version` on the command prompt. If everything worked fine, you will see the version number for the Pyarmor_ package you just installed.
 

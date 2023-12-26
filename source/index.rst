@@ -6,31 +6,29 @@
 :Contact: |contact|
 :Author: |author|
 
-Let's get you started?
+Let's get you started!
 ==================================
 
-*Limekit* is desktop framework for 
+*Limekit* is framework for building desktop applications using the `lua <https://www.lua.org/>`_ language without the need for HTML and CSS. By using *Limekit*, this allows you to maintain one lua codebase and create cross-platform apps that work on Windows, macOS, and Linux.
 
-* :doc:`Part 1: Setup <part-1>` takes you by the hand through a series of steps to setup python on your computer. This 
+Considering that framework is developed in `python <https://www.python.org/>`_, this mean you don't have to 
+learn any C/C++, or use complex compilers to get the framework working. Simply plug 'n' play.
 
-* :doc:`Part 2: Using widgets <part-2>` guides are recipes. They guide you through the steps involved in addressing key problems and use-cases. They are more advanced than tutorials and assume some knowledge of how |Python| works.
+.. note:: 
+   Currently, only Windows and Linux are supported. MacOS support coming soon
 
-* :doc:`Part 3: References <part-3>` guides contain key concepts, man page, configurations and other aspects of |Pyarmor| machinery.
+* :doc:`Part 1: Setup <getting-started>` takes you by the hand through a series of steps to setup python on your computer. This is the most crucial part as the framework relies on the python language.
 
-* :doc:`Part 4: Topics <part-4>` guides insight into key topics and provide useful background information and explanation. They describe how it works and how to use it but assume that you have a basic understanding of key concepts.
+* :doc:`Part 2: Using Widgets </widgets>` This part focuses on interactivity. Think buttons, combo boxes, menus, check boxes, radio buttons and many more - they're all in the mix!
 
-* :doc:`Part 5: Licenses <licenses>` describes EULA of |Pyarmor|, the different |Pyarmor| licenses and how to purchase |Pyarmor| license.
+* :doc:`Part 3: App utilities <part-3>` This part shows you how to make the most of the utilities in the framework and all the extra goodies that come with it!
 
 Getting help
 ============
 
 Having trouble?
 
-Try the :doc:`FAQ <questions>` – it's got answers to many common questions.
-
-Looking for specific information? Try the :ref:`genindex`, or :ref:`the detailed table of contents <mastertoc>`.
-
-Not found anything? See :ref:`asking questions in github <asking questions>`.
+Try asking in our `r/limekit <https://www.reddit.com/limekit>`_ community
 
 Report bugs with Pyarmor_ in issues_
 
@@ -42,14 +40,10 @@ Table of Contents
    :maxdepth: 3
    :name: mastertoc
 
-   widgets/index
-
    part-1
-   part-2
-   part-3
-   part-4
-   licenses
-   questions
+   widgets
+   layouts
+   app-utils
 
 Indices and tables
 ==================
@@ -57,5 +51,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
-.. include:: _common_definitions.txt

@@ -1,8 +1,7 @@
 ===========
-Button
+LineEdit
 ===========
 
-Using a Button
-==================
-
+Installation
+------------
 To use Lumache, first install it using pip:
