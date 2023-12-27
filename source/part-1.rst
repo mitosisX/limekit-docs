@@ -6,5 +6,3 @@ Getting Started
    :maxdepth: 3
 
    tutorial/getting-started
-
-.. include:: _common_definitions.txt

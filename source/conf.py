@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "limekit docs"
-copyright = "2023, Omega Msiska"
+copyright = "2023, Take bytes"
 author = "Limekit"
 release = "1.0"
 
@@ -33,3 +33,8 @@ exclude_patterns = []
 
 html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
+
+# numfig = False
+
+# Disable numbered bullet points in HTML output
+# html_use_numbered_lists = False

@@ -1,13 +1,10 @@
 ==============
-App utilities
+App
 ==============
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
 
-   .. reference/concepts
-   .. reference/man
-   .. reference/environments
-   .. reference/errors
+   
 
-.. include:: _common_definitions.txt
+
