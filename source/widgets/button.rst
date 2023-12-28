@@ -20,6 +20,7 @@ Methods
 ***************
 
 .. function:: setOnClick(callback)
+  :noindex:
 
   The function executed when the button is clicked
 

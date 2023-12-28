@@ -1,9 +1,9 @@
 Widgets
 ========
 
-There are currently ``37`` widgets available for you to use, and considering the framework is still fresh, the number is subject to change. Expect even more widgets to be added as the framework matures.
+Presently, there are |widgets| widgets at your disposal within the framework. Since the framework is new, this count might change. Anticipate additional widgets as the framework evolves.
 
-However, take a deep dive into the available widgets for more insight on how to use them
+For a comprehensive understanding of their usage, explore the available widgets in-depth.
 
 .. toctree::
    :maxdepth: 2
@@ -14,10 +14,9 @@ However, take a deep dive into the available widgets for more insight on how to 
    widgets/button-group
    widgets/calendar
    widgets/check-box
-   widgets/collapsible
    widgets/command-button
    widgets/date-picker
-   widgets/docker
+   widgets/dock
    widgets/double-spinner
    widgets/gif-player
    widgets/group-box

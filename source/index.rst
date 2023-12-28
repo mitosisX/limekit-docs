@@ -41,3 +41,4 @@ Try asking in our `r/limekit <https://www.reddit.com/limekit>`_ community
    widgets
    layouts
    app-utils
+   user-resources

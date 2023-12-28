@@ -1,11 +1,11 @@
 Accordion
 ###########
 
-A powerful component designed to manage and display multiple tabs, each hosting distinct set of widgets or layouts.
+A powerful component designed to manage and display multiple tabs, each hosting distinct set of widgets or layouts but only one item can stay open at a time
 
 .. code-block:: lua
 
-  local accoridon = Accordion()
+  local accordion = Accordion()
 
 You can add a widget or a layout to the accordion using ``addChild(widget, label, icon: optional)`` or ``addLayout(layout, label, icon: optional)``, respectively. Take a look at the different code snippet below
 

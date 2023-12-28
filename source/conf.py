@@ -15,6 +15,10 @@ version = "1.0"
 author = "Omega Msiska"
 contact = "omegamsiskah@gmail.com"
 
+rst_epilog = """
+.. |widgets| replace:: 35
+"""
+
 # pygment_style = "sphinx"
 
 # -- General configuration ---------------------------------------------------
