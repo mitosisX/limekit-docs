@@ -54,6 +54,10 @@ Properties
 
 checkout :doc:`Using resources </widgets/accordion>`
 
+.. function:: setGridVisible(visible: bool)
+
+  Show or hide grid lines on the calendar
+
 .. function:: setTooltip(text)
 
   Enable text that appears when a mouse hovers on the tab

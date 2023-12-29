@@ -21,6 +21,7 @@ For a comprehensive understanding of their usage, explore the available widgets 
    widgets/gif-player
    widgets/group-box
    widgets/hline
+   widgets/image
    widgets/knob
    widgets/label
    widgets/lcd-number

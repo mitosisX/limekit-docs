@@ -27,6 +27,7 @@ Properties
 .. function:: setIcon(path)
 
   Sets an icon on the button
+
 checkout :doc:`Using resources </widgets/accordion>`
 
 .. function:: setIconSize(width, height)
@@ -53,7 +54,12 @@ checkout :doc:`Using resources </widgets/accordion>`
 
   Return the check/toggle status of the button
 
+.. function:: setMenu(menu)
+
+  Sets menu to the button
+
 .. function:: setMargins(left, top,right,bottom)
 
   Sets the margins of the button
 
+checkout :doc:`working with menus </widgets/menu>`

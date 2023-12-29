@@ -7,9 +7,14 @@ A container that groups and organizes related widgets together. It provides a vi
 
   local group = GroupBox(title: optional)
 
-.. note::
+.. important::
 
   You can only set a layout to the widget and not add widgets directly
+
+.. note::
+
+  using ``setChecked(false)`` disables all the widgets in the widget. However, this only applies once ``setCheckable(true)`` has been used.
+
 
 Properties
 ***************
