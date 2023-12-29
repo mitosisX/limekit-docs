@@ -7,7 +7,7 @@ A button that combines a label and a command. It's designed to present descripti
 
   local date = CommandButton(text)
 
-Methods
+Properties
 ***************
 
 .. function:: setOnClick(callback)

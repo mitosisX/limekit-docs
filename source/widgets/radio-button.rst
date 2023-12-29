@@ -3,7 +3,7 @@ RadioButton
 
 This functions as a button that allows toggling between being selected (checked) or deselected (unchecked). Generally, these buttons offer users a choice among several options where only one can be selected at a time. Within a set of radio buttons, selecting a new option automatically deselects the previously chosen one.
 
-Methods
+Properties
 ***************
 
 .. code-block:: lua
@@ -28,7 +28,7 @@ checkout :doc:`Using resources </widgets/accordion>`
 
   Tooltips are brief informational messages that appear when the user hovers the mouse pointer over the tab
 
-.. function:: setTooltipDuration(check: bool)
+.. function:: setTooltipDuration(duration)
 
   Set how long the tooltip displays
 
@@ -38,7 +38,7 @@ checkout :doc:`Using resources </widgets/accordion>`
 
 .. function:: getCheck()
 
-  Returns check status; true or false
+  Returns check status; ``true`` or ``false``
 
 .. function:: setCheck(check: bool)
 

@@ -7,12 +7,12 @@ A small box that can be checked or unchecked by users. It's used to toggle somet
 
   local check = CheckBox(text)
 
-Methods
+Properties
 ***************
 
 .. function:: setOnCheck(callback)
   :noindex:
-  
+
   Executed when checked. Arguments passed include self and state.
 
 .. function:: setIcon(path)

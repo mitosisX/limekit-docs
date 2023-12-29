@@ -1,13 +1,13 @@
 Button
 ###########
 
-The button, one of the mostly used widget in any Graphical User Interface (GUI). Click on it and a computer will do some task for you.
+The button, one of the mostly used widget in any Graphical User Interface (GUI). You can label it with text or even include icons to make it more visually informative. It's commonly used to trigger actions or functions within an application when clicked.
 
 .. code-block:: lua
 
   local button = Button(text)
 
-This is done by calling a callback function after calling on a button. You can specify such a callback function with the ``setOnClick`` method
+This is done by calling a callback function after clicking on a button. You can specify such a callback function with the ``setOnClick`` method
 
 .. code-block:: lua
   :linenos:
@@ -16,7 +16,7 @@ This is done by calling a callback function after calling on a button. You can s
     -- some task here
   end)
 
-Methods
+Properties
 ***************
 
 .. function:: setOnClick(callback)
@@ -27,7 +27,7 @@ Methods
 .. function:: setIcon(path)
 
   Sets an icon on the button
-checkout * :doc:`Using resources </widgets/accordion>`
+checkout :doc:`Using resources </widgets/accordion>`
 
 .. function:: setIconSize(width, height)
   
@@ -40,7 +40,6 @@ checkout * :doc:`Using resources </widgets/accordion>`
 .. function:: getText()
 
   Returns text on the button
-
 
 .. function:: setFlat()
 

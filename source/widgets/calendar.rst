@@ -41,7 +41,7 @@ You can add add a widget or a layout to the accordion using ``addChild(widget, l
 
 *checkout* :doc:`Layout Managers </layouts>`
 
-Methods
+Properties
 ***************
 
 .. function:: addChild(widget, label, icon: optional)

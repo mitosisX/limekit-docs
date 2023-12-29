@@ -20,7 +20,6 @@ For a comprehensive understanding of their usage, explore the available widgets 
    widgets/double-spinner
    widgets/gif-player
    widgets/group-box
-   widgets/hlayout
    widgets/hline
    widgets/knob
    widgets/label

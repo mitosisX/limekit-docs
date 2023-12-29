@@ -7,7 +7,7 @@ A widget in PyQt specifically designed for editing dates. It provides a user-fri
 
   local date = DatePicker()
 
-Methods
+Properties
 ***************
 
 .. function:: setOnDatePick(callback)
@@ -15,7 +15,7 @@ Methods
 
   The function executed when the button is clicked
 
-  :params: self and date
+  :params: ``self`` and ``date``
 
 .. function:: setDate(self, year, month, day, hour: optional, minutes: optional)
   

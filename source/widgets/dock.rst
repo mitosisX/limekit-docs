@@ -7,7 +7,7 @@ A versatile element used to create dockable panes or windows within an applicati
 
   local dock = Dock()
 
-Methods
+Properties
 ***************
 
 .. function:: setProperties(properties)
@@ -28,6 +28,7 @@ Methods
   Sets text displayed on the dock widget
 
 .. function:: addChild(child)
+  :noindex:
   
   Add a widget to the widget
 

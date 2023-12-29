@@ -27,7 +27,7 @@ You can add buttons (radio button and check box) to the widget using the ``addBu
   group:addButton(boolean)
   layout:addChild(boolean)
 
-Methods
+Properties
 ***************
 
 .. function:: addChild(widget, label, icon: optional)
