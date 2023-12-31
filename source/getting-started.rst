@@ -25,7 +25,7 @@ Key Features:
         local window = Window{title='Limekit app', icon=images('app.png')}
         window:show()
 
-    - This is basically enough for Limekit to run your program 😊
+    - This is basically enough for Limekit to run your program. Mind blowing right? 😊
     
 - **No C, C++ or python knowledge**: You don't need to know any python, C or C++ to develop programs in Limekit, just lua
 - **Cross-platform**: Run the same code base in Windows, Linux and macOS

@@ -1,11 +1,27 @@
 Image
 =========
 
-A piece of text used to display information in a user interface. It's a simple element primarily used for showing text or images. These widgets are often used to provide descriptions, titles, or informative messages within an application. They help in presenting static content that users can read or refer to as part of the interface design.
+This widget allows developers to load and display images from files or resources, enabling users to view visual content as part of the application's design or functionality.
 
 .. code-block:: lua
 
-  local label = Label(text)
+  local image = Image(path)
 
 Properties
 ***************
+
+.. function:: setOnClick(callback)
+
+  Executed when the image is clicked.
+  
+.. function:: setImage(path)
+
+  Sets the current image
+
+.. function:: setImageAlign(align)
+
+  Set how the image is aligned. Avaibale options include ``left``, ``right``, ``bottom``, ``top``, ``center``, ``hcenter`` and ``vcenter``
+
+.. function:: resizeImage(width, height)
+
+  Resizes the images to the specified dimensions

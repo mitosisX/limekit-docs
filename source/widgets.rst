@@ -1,9 +1,15 @@
 Widgets
 ========
 
-Presently, there are |widgets| widgets at your disposal within the framework. Since the framework is new, this count might change. Anticipate additional widgets as the framework evolves.
+Widgets are graphical elements or components that make up the user interface of an application. They can be buttons, text boxes, labels, windows, checkboxes, sliders, and more. These widgets allow users to interact with the program by providing input, displaying information, or triggering specific actions. This framework provides a wide range of widgets that can be arranged to create a functional and visually appealing user interface.
 
-For a comprehensive understanding of their usage, explore the available widgets in-depth.
+Presently, there are |widgets| widgets at your disposal within the framework. Considering the framework is new, the count is subject to change. Anticipate additional widgets as the framework evolves.
+
+.. note::
+   Some widgets are ``premium`` and can only be accesible after purchase of a license
+
+
+For a comprehensive understanding of their usage, explore the available widgets in-depth:
 
 .. toctree::
    :maxdepth: 2
@@ -14,6 +20,7 @@ For a comprehensive understanding of their usage, explore the available widgets 
    widgets/button-group
    widgets/calendar
    widgets/check-box
+   widgets/combo-box
    widgets/command-button
    widgets/date-picker
    widgets/dock

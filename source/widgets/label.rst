@@ -24,7 +24,7 @@ Properties
 
   Returns the text displayed on the widget
   
-.. function:: setTextAlign(text)
+.. function:: setTextAlign(align)
 
   Set how the text is aligned. Avaibale options include ``left``, ``right``, ``bottom``, ``top``, ``center``, ``hcenter`` and ``vcenter``
 
