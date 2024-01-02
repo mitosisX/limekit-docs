@@ -26,7 +26,7 @@ Properties
   
 .. function:: setTextAlign(align)
 
-  Set how the text is aligned. Avaibale options include ``left``, ``right``, ``bottom``, ``top``, ``center``, ``hcenter`` and ``vcenter``
+  Set how the text is aligned. Available options include ``left``, ``right``, ``bottom``, ``top``, ``center``, ``hcenter`` and ``vcenter``
 
 .. function:: setWordWrap(enable: bool)
 

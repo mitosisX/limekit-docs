@@ -1,2 +1,2 @@
-User Resources
-================
+Accessing Resources
+====================

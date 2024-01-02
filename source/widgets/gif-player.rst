@@ -7,6 +7,12 @@ A widget that allows you to view and play GIF (Graphics Interchange Format) file
 
   local gif = GifPlayer(path)
 
+*- GIF's play automatically.*
+
+.. note::
+
+  There's an issue with how GIFs are displayed in the Qt framework we're using. The output always ends up pixelated and in poor quality. Until the Qt developer addresses this problem, there's nothing we can do from our end.
+
 Properties
 ***************
 

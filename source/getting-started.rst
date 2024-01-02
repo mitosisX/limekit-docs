@@ -9,10 +9,10 @@ Installation
     :local:
     :backlinks: top
 
-What's Limekit
-==============
+What's Limekit?
+=================
 
-*Limekit* is framework for building desktop applications using the `lua <https://www.lua.org/>`_ language without the need for HTML and CSS. On the other hand allowing developers to maintain one lua codebase and create cross-platform apps that work on Windows, macOS, and Linux.
+*Limekit* is framework for building desktop applications using the `lua <https://www.lua.org/>`_ language without the need for HTML and CSS. On the other hand allowing developers to maintain one lua codebase and create cross-platform apps that work on ``Windows``, ``macOS``, and ``Linux``.
 
 Key Features:
 
@@ -49,7 +49,14 @@ Once the installation is complete, open your terminal (Comamnd Prompt or PowerSh
 
     $ python
 
-If you get a python console in form of ``>>>``, you are good to go! 😊
+If you get a similar output as the one below, you are good to go! 😊
+
+.. code-block:: python
+    
+    Python 3.10.6 (tags/v3.10.6:9c7b4bd, Aug  1 2022, 21:53:49) [MSC v.1932 64 bit (AMD64)] on win32
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>>
+
 
 After installation, type :command:`pyarmor --version` on the command prompt. If everything worked fine, you will see the version number for the Pyarmor_ package you just installed.
 

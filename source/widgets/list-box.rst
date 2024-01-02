@@ -18,7 +18,7 @@ Properties
 
 .. function:: setItemViewMode(callback)
 
-  Sets how items are displayed in the widget: Avaibale options: ``icons`` and ``list``
+  Sets how items are displayed in the widget: Available options: ``icons`` and ``list``
 
 .. function:: setItems(data: table)
 
@@ -46,7 +46,7 @@ Properties
   
 .. function:: getText()
 
-  Returns selecte item's text
+  Returns selected item's text
 
 .. function:: getinsertItemAtText(row, text)
 
@@ -76,6 +76,6 @@ Properties
 
   Enables or disables dragging and dropping of items
 
-.. function:: setEnableDrag(enable: bool)
+.. function:: setDragEnabled(enable: bool)
 
   Enables or disables drag

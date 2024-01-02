@@ -17,7 +17,6 @@ Properties
 
   :params: ``self`` and ``value``
 
-
 .. function:: setRange(text)
   
   Sets the ``minimum`` and ``maximum`` values for the widget

@@ -20,7 +20,7 @@ Properties
 
 .. function:: setImageAlign(align)
 
-  Set how the image is aligned. Avaibale options include ``left``, ``right``, ``bottom``, ``top``, ``center``, ``hcenter`` and ``vcenter``
+  Set how the image is aligned. Available options include ``left``, ``right``, ``bottom``, ``top``, ``center``, ``hcenter`` and ``vcenter``
 
 .. function:: resizeImage(width, height)
 

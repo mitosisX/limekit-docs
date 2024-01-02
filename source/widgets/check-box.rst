@@ -28,14 +28,14 @@ checkout :doc:`Using resources </widgets/accordion>`
 .. function:: setTooltip(text)
 
   Tooltips are brief informational messages that appear when the user hovers the mouse pointer over the tab
+  
+.. function:: getTooltip()
+
+  Returns the tooltip text
 
 .. function:: setTooltipDuration(check: bool)
 
   Set how long the tooltip displays
-
-.. function:: getTooltip()
-
-  Returns the tooltip text
 
 .. function:: getCheck()
 
