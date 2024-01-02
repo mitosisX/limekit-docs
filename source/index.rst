@@ -43,5 +43,5 @@ Try asking in our `r/limekit <https://www.reddit.com/limekit>`_ community
    getting-started
    widgets
    layouts
-   app-utils
+   app-object
    user-resources
