@@ -1,7 +1,7 @@
 App object
 ==============
 
-It's a collection of different functions (tools) that your program can use for various task. These tasks include reading files, gathering info about the computer's CPU, checking how much memory is available, choosing files and many more.
+Is a collection of different functions (tools) that your program can use for various task. These tasks include reading files, gathering info about the computer's CPU, checking how much memory is available, choosing files and many more.
 
 .. code-block:: lua
 
