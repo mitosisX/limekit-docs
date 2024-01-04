@@ -5,8 +5,9 @@ Widgets are graphical elements or components that make up the user interface of 
 
 Presently, there are :mod:`35` widgets at your disposal within the framework. Considering the framework is new, the count is subject to change. Anticipate additional widgets as the framework evolves.
 
-.. note::
-   Some widgets are ``premium`` and are accesible after license purchase
+.. admonition:: Hey, heads up!
+
+   Before you start, you might want to take a look at how to access your resources. Just head over :doc:`here </user-resources>`
 
 For a comprehensive understanding of their usage, explore the available widgets in-depth:
 

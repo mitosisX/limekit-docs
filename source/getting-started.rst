@@ -14,6 +14,8 @@ What's Limekit?
 
 *Limekit* is framework for building desktop applications using the `lua <https://www.lua.org/>`_ language without the need for HTML and CSS. On the other hand allowing developers to maintain one lua codebase and create cross-platform apps that work on ``Windows``, ``macOS``, and ``Linux``.
 
+~ It is being developed by company called :mod:`Take bytes`, with :mod:`Omega Msiska` as the lead developer on this project.
+
 Key Features:
 
 - **Modern UI**: Limekit allows developers to craft beautiful UI's with dark and light modes available.
@@ -26,8 +28,11 @@ Key Features:
         window:show()
 
     - This is basically enough for Limekit to run your program. Mind blowing right? 😊
+
+Guess what?
+------------
     
-- **No C, C++ or python knowledge**: You don't need to know any python, C or C++ to develop programs in Limekit, just lua
+- **No C, C++ or python knowledge**: You don't need to know any python, C or C++ to develop programs in :mod:`Limekit`, just lua
 - **Cross-platform**: Run the same code base in Windows, Linux and macOS
 - **C Function Conversion**: Converts some Python functions to C functions and compiles them into machine instructions using high optimization options for irreversible obfuscation.
 - **Free**: The framework is free to use
@@ -35,7 +40,7 @@ Key Features:
 Installing Python
 ======================
 
-The Limekit framework is built in Python 3.10, so you'll need to have Python 3.10 installed to run your code with it. Follow the tutorial to get Python 3.10 installed on your OS.
+The Limekit framework is built in Python 3.10, so :command:`you'll need to have Python 3.10 installed` to use the framework. Follow the tutorial to get Python 3.10 installed on your OS.
 
 .. note::
     This guide is for those who haven't delved into Python before and are installing it for the very first time.
@@ -43,7 +48,7 @@ The Limekit framework is built in Python 3.10, so you'll need to have Python 3.1
 Windows
 ----------
 
-- Installing python on Windows is pretty straight forward. Simply visit `python's website <https://python.org/>`_ to download for your system
+- Installing python on Windows is pretty straight forward. Simply visit `python's website <https://www.python.org/downloads/release/python-31011/>`_ to download for your system
 
 Once the installation is complete, open your terminal (Comamnd Prompt or PowerShell) and type the following command::
 
@@ -51,13 +56,40 @@ Once the installation is complete, open your terminal (Comamnd Prompt or PowerSh
 
 If you get a similar output as the one below, you are good to go! 😊
 
-.. code-block:: python
+.. code-block::
     
     Python 3.10.6 (tags/v3.10.6:9c7b4bd, Aug  1 2022, 21:53:49) [MSC v.1932 64 bit (AMD64)] on win32
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
 
+Navigate to the bottom of the page to follow through the final stages
 
-After installation, type :command:`pyarmor --version` on the command prompt. If everything worked fine, you will see the version number for the Pyarmor_ package you just installed.
+Linux
+----------
 
-Not all the platforms are supported, more information check :doc:`../reference/environments`
+.. note::
+
+    Only Ubuntu has been tested with the framework, but should work on other Linux distros.
+
+Done installing. What's next?
+===============================
+
+Head over to `our github repo <https://www.python.org/downloads/release/python-31011/>`_ to download :mod:`Limer`.
+
+.. important::
+
+    :mod:`Limer` is the program that ``only`` executes your apps. It is not an IDE nor an editor.
+
+Inside the downloaded archieve, there are files with ``.bat`` and ``.sh`` extensions. If on Windows, use :mod:`.bat` files, and If on Linux and macOS use :mod:`.sh` files. You can delete the other files you wont be using to avoid clatter
+
+Alright, with that sorted out, let's go through these important steps
+
+1. The first step is to download the Limekit framework in your system. Execute the :mod:`download` file to launch the process.
+
+   This process requires an active internet connection.
+
+2. After successfuly installing Limekit in your system. Execute the :mod:`run` to launch the 
+
+If all goes well, you'll be welcomed by a similar screen shown below
+
+.. image:: images/limekit.png

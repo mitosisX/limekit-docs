@@ -90,7 +90,7 @@ Is a collection of different functions (tools) that your program can use for var
 
 .. function:: extractZip(zip, destination)
 
-   Extract the content of a zip file to some destination
+   Extracts the content of a zip file to some destination
 
 .. function:: checkIfFolder(path)
 
