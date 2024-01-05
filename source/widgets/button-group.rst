@@ -38,7 +38,7 @@ Properties
   
   Adds a layout in a tab to the accordion with a given label, and an icon if necessary
 
-checkout :doc:`Using resources </widgets/accordion>`
+checkout :doc:`Using resources </user-resources>`
 
 .. function:: setTooltip(text)
 

@@ -34,7 +34,6 @@ Guess what?
     
 - **No C, C++ or python knowledge**: You don't need to know any python, C or C++ to develop programs in :mod:`Limekit`, just lua
 - **Cross-platform**: Run the same code base in Windows, Linux and macOS
-- **C Function Conversion**: Converts some Python functions to C functions and compiles them into machine instructions using high optimization options for irreversible obfuscation.
 - **Free**: The framework is free to use
 
 Installing Python
@@ -69,7 +68,7 @@ Linux
 
 .. note::
 
-    Only Ubuntu has been tested with the framework, but should work on other Linux distros.
+    The framework has only been tested on Ubuntu, but it's expected to function on other Linux distros as well.
 
 Done installing. What's next?
 ===============================
@@ -80,9 +79,9 @@ Head over to `our github repo <https://www.python.org/downloads/release/python-3
 
     :mod:`Limer` is the program that ``only`` executes your apps. It is not an IDE nor an editor.
 
-Inside the downloaded archieve, there are files with ``.bat`` and ``.sh`` extensions. If on Windows, use :mod:`.bat` files, and If on Linux and macOS use :mod:`.sh` files. You can delete the other files you wont be using to avoid clatter
+Inside the downloaded archieve, there are files with ``.bat`` and ``.sh`` extensions. If on Windows, use :mod:`.bat` files, and if on Linux and macOS use :mod:`.sh` files. You can delete the other files you wont be needing.
 
-Alright, with that sorted out, let's go through these important steps
+Alright, with that sorted out, let's go through these 2 important steps
 
 1. The first step is to download the Limekit framework in your system. Execute the :mod:`download` file to launch the process.
 

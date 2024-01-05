@@ -28,7 +28,7 @@ Properties
 
   Sets an icon on the button
 
-checkout :doc:`Using resources </widgets/accordion>`
+checkout :doc:`Using resources </user-resources>`
 
 .. function:: setIconSize(width, height)
   
