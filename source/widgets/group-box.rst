@@ -32,11 +32,11 @@ Properties
 
   Sets the title for the widget
 
-.. function:: setTooltip(text)
+.. function:: setToolTip(text)
 
   Tooltips are brief informational messages that appear when the user hovers the mouse pointer over the tab
 
-.. function:: setTooltipDuration(duration)
+.. function:: setToolTipDuration(duration)
 
   Set how long the tooltip displays
 

@@ -25,7 +25,7 @@ checkout :doc:`Using resources </user-resources>`
   
   Sets the icon size
 
-.. function:: setTooltip(text)
+.. function:: setToolTip(text)
 
   Tooltips are brief informational messages that appear when the user hovers the mouse pointer over the tab
   
@@ -33,7 +33,7 @@ checkout :doc:`Using resources </user-resources>`
 
   Returns the tooltip text
 
-.. function:: setTooltipDuration(check: bool)
+.. function:: setToolTipDuration(check: bool)
 
   Set how long the tooltip displays
 

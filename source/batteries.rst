@@ -149,7 +149,7 @@ Properties
 
   Sets the icon
 
-.. function:: setTooltip(text)
+.. function:: setToolTip(text)
 
   Sets the icon
 
@@ -166,9 +166,12 @@ checkout :doc:`Menus </widgets/menu>`
 System Notifications
 ^^^^^^^^^^^^^^^^^^^^^
 
+Allows you to send notification from your app.
+
 .. code-block:: lua
 
-  local tray = SysTray(icon)
+  local tray = SysNotification(icon)
 
 Properties
 ^^^^^^^^^^^
+
