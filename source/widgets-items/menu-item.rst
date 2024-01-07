@@ -54,7 +54,7 @@ Properties
 
 checkout :doc:`Using resources </user-resources>`
 
-.. function:: setTooltip(text)
+.. function:: setToolTip(text)
 
   Enable text that appears when a mouse hovers on the tab
 

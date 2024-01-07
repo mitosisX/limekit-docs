@@ -36,6 +36,7 @@ For a comprehensive understanding of their usage, explore the available widgets 
    widgets/list-box
    widgets/menu
    widgets/menu-bar
+   widgets/modal
    widgets/progress-bar
    widgets/radio-button
    widgets/scroller

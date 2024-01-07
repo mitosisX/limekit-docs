@@ -128,7 +128,7 @@ Other
 .. code-block:: lua
 
   -- type: hex or RGB
-  app.colorPickerDialog(window, type)
+  local color = app.colorPickerDialog(window, type)
 
 3. System Tray and System Notification
 ----------------------------------------

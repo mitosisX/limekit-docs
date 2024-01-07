@@ -58,7 +58,7 @@ checkout :doc:`Using resources </user-resources>`
 
   Show or hide grid lines on the calendar
 
-.. function:: setTooltip(text)
+.. function:: setToolTip(text)
 
   Enable text that appears when a mouse hovers on the tab
 
