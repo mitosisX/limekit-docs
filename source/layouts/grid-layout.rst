@@ -15,9 +15,9 @@ Properties
   
   Adds a widget to the layout on a specified row (``x position``) and column (``y position``). The ``rowSpan`` and ``columnSpan`` are optional but allow a widget to span multiple rows or columns.
 
-.. function:: addLayout(widget, row, column, rowSpan: optional, columnSpan: optional)
+.. function:: addLayout(layout, row, column, rowSpan: optional, columnSpan: optional)
 
-  Similar to the above property, now only about layouts.
+  Similar to the above property, now only for layouts.
 
 .. function:: getChildAt(row, column)
 
@@ -30,11 +30,3 @@ Properties
 .. function:: setMargins(left, top,right,bottom)
 
   Sets the margins of the layout
-
-
-.. important::
-
-   Please run this obfuscated in the machine with same Python version and same platform, otherwise it doesn't work. Because :mod:`pyarmor_runtime_000000` has an :term:`extension module`, it's platform-dependent and bind to Python version.
-
-
-

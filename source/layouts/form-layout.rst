@@ -19,7 +19,7 @@ Properties
 
   Adds a widget to a layout with a given label
 
-.. function:: ddLayout(label, layout):
+.. function:: addLayout(label, layout):
 
   Adds a layout to the widget with a given label
 
