@@ -133,12 +133,3 @@ Is a collection of different functions (tools) that your program can use for var
    Quits the application
 
 .. function:: getCheck()
-.. function:: getCheck()
-.. function:: getCheck()
-.. function:: getCheck()
-.. function:: getCheck()
-.. function:: getCheck()
-.. function:: getCheck()
-.. function:: getCheck()
-.. function:: getCheck()
-.. function:: getCheck()
