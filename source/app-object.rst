@@ -128,7 +128,7 @@ Is a collection of different functions (tools) that your program can use for var
 
    Does not overwrite, only appeands content to the file
 
-.. function:: quite()
+.. function:: quit()
 
    Quits the application
 
