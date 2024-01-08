@@ -10,7 +10,7 @@ Is a collection of different functions (tools) that your program can use for var
 
 .. function:: isIDE()
 
-   Returns whether the app is being run in :mod:`Limekit Runner` or as executable
+   Returns whether the app is being run in :mod:`Limer` or as executable
 
 .. function:: joinPaths(...)
 
@@ -132,4 +132,90 @@ Is a collection of different functions (tools) that your program can use for var
 
    Quits the application
 
-.. function:: getCheck()
+.. function:: setClipboardText(text)
+
+   Sets text to the clipboard
+
+.. function:: getClipboardText()
+
+   Returns text from the clipboard
+   
+.. function:: listFolder(path)
+
+   Returns a list of files in a folder
+   
+.. function:: renameFile(file, newName)
+
+   Renames a file
+   
+.. function:: renameFolder(path, newName)
+
+   Renames a folder
+
+.. function:: createFolder(path)
+
+   Creates a new folder
+
+.. function:: playSound(file)
+
+   Plays any audio format
+   
+.. function:: getProcesses()
+
+   Returns a list for running processes
+
+.. function:: killProcess(pid)
+
+   Kills/terminates a running process by a pid (Process Identifier)
+   
+.. function:: getUsers()
+
+   Returns available users on a system
+   
+.. function:: getCPUCount()
+
+   Returns the number of CPUs available
+   
+.. function:: getBatteryInfo()
+
+   Returns available battery info
+
+.. function:: getDiskPartitions()
+
+   Returns available partitions in a system
+   
+.. function:: getDiskInfo(path)
+
+   Returns disk info. :mod:`path` can obtained from above method, ie, ``C:\\``, ``D:\\``, ``E:\\``
+
+.. function:: getBootTime()
+
+   Returns the system's boot time
+
+.. function:: getMachineType()
+
+   Returns the machine type, ie, ``AMD64``
+
+.. function:: getNetworkNodeName()
+
+   Returns the network node name
+
+.. function:: getProcessorName()
+
+   Returns the processor info
+
+.. function:: getPlatformName()
+
+   Returns the platform name, ie, ``Windows-10-10.0.22621-SP0``
+
+.. function:: getSystemRelease()
+
+   Returns the OS's release
+
+.. function:: getOSName()
+
+   Returns the OS's name, ie, ``Windows``
+
+.. function:: getOSVersion()
+
+   Returns available users on a system
