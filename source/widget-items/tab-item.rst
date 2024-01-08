@@ -1,5 +1,5 @@
-MenuItems
-###########
+TabItem
+===========
 
 A powerful component designed to manage and display multiple tabs, each hosting distinct set of widgets or layouts but only one item can stay open at a time
 

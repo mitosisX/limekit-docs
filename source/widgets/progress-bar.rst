@@ -1,8 +1,7 @@
-=============
 ProgressBar
 =============
 
-A small box that can be checked or unchecked by users. It's used to toggle something on or off in an application, like enabling or disabling a feature or selecting options.
+A visual widget that shows the progress of a task or an operation. It appears as a bar that fills up gradually, representing the completion status of a process.
 
 .. code-block:: lua
 
@@ -11,5 +10,19 @@ A small box that can be checked or unchecked by users. It's used to toggle somet
 Properties
 ***************
 
-.. function:: setOnCheck(callback)
+.. function:: setRange(start, end)
   :noindex:
+
+  Sets the progress range
+
+.. function:: setValue(value)
+
+  Sets the current value
+
+.. function:: getValue()
+
+  Returns the current value
+
+.. function:: setOrientation(orientation)
+
+  Sets the orientation: ``horizontal`` or ``vertical``

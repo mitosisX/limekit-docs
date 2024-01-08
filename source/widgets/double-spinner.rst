@@ -14,7 +14,7 @@ Properties
 .. function:: setOnValueChange(callback)
   :noindex:
 
-  The function executed when the value changes.
+  The function executed when the value changes
 
   :params: ``self`` and ``value``
 
@@ -24,12 +24,12 @@ Properties
 
 .. function:: setValue(value)
   
-  Sets text displayed on the dock widget
+  Sets the value displayed on the widget
 
 .. function:: getValue()
   :noindex:
   
-  Get current value
+  Returns the current value
 
 .. function:: setPrefix(prefix)
   

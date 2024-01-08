@@ -25,9 +25,11 @@ Let's get you started!
 
 * :doc:`Part 2: Using Widgets </widgets>`: Focuses on interactivity. Think buttons, combo boxes, menus, check boxes, radio buttons and many more - they're all in the mix!
 
-* :doc:`Part 3: Layout Managers </layouts>`: Covers all the different layout managers that are available.
+* :doc:`Part 3: Using Widgets </widgets>`: Focuses on interactivity. Think buttons, combo boxes, menus, check boxes, radio buttons and many more - they're all in the mix!
 
-* :doc:`Part 4: App utilities </app-object>`: Shows you how to make the most of the utilities in the framework and all the extra goodies that come with it!
+* :doc:`Part 4: Widget Items </widget-items>`: Covers how to interact with some special widgets such as the Tab, ToolBar, etc.
+
+* :doc:`Part 5: App utilities </app-object>`: Shows you how to make the most of the utilities in the framework and all the extra goodies that come with it!
 
 * :doc:`Part 5: Batteries included </batteries>`: Covers all the other features provided by the framework, such as the sqlite3 database, using the system tray, displaying system notifications, threads, signals, and many more.
 
@@ -47,6 +49,7 @@ Or contact me on omegamsiskah@gmail.com
 
    getting-started
    widgets
+   widget-items
    layouts
    app-object
    user-resources
