@@ -50,7 +50,8 @@ Is a collection of different functions (tools) that your program can use for var
    .. code-block:: lua
 
       -- Based on the provided data, calculates shortest path from point a to point c
-      local graph = app.weightedGraph({{'point a', 'point b', 20}, {'point a', 'point c', 10}, {'point b', 'point c', 50}}, 'point a', 'point c')
+      local graph = app.weightedGraph({{'point a', 'point b', 20}, {'point a', 'point c', 10}, 
+         {'point b', 'point c', 50}}, 'point a', 'point c')
 
 .. function:: getStyles()
 
@@ -171,7 +172,7 @@ Is a collection of different functions (tools) that your program can use for var
 .. function:: getUsers()
 
    Returns available users on a system
-   
+
 .. function:: getCPUCount()
 
    Returns the number of CPUs available

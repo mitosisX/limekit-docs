@@ -5,12 +5,13 @@ An input field where users can enter and edit a single line of text. It's common
 
 .. code-block:: lua
 
-  local input = LineEdit()
+  local input = LineEdit(text: optional)
 
 Properties
 ***************
 
 .. function:: setOnTextChange(callback)
+  :noindex:
 
   The function executed text inside changes
 
@@ -75,10 +76,6 @@ Properties
 .. function:: getEndSelection()
 
   Returns the end cursor position for selected text
-
-.. function:: getSelectionLength()
-
-  Returns count for text selected
 
 .. function:: getSelectionLength()
 

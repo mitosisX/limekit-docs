@@ -70,25 +70,35 @@ Linux
 
     The framework has only been tested on Ubuntu, but it's expected to function on other Linux distros as well.
 
+.. important::
+    
+    Before trying to install python3.10, try executing ``python3.10`` or ``python3 --version`` in the terminal to see if python is already installed, as most Linux distributions come with python installed
+
+Head over to `this website <https://www.linuxcapable.com/how-to-install-python-3-10-on-ubuntu-linux/>`_ to learn how to install python3.10 on your Linux
+
 Done installing. What's next?
 ===============================
 
 Head over to `our github repo <https://www.python.org/downloads/release/python-31011/>`_ to download :mod:`Limer`.
 
-.. important::
+There are :mod:`over 35 examples` prepared for your journey in Limekit, just click `here <https://www.python.org/downloads/release/python-31011/>`_ to downlaod them
 
-    :mod:`Limer` is the program that ``only`` executes your apps. It is not an IDE nor an editor.
+.. note::
 
-Inside the downloaded archieve, there are files with ``.bat`` and ``.sh`` extensions. If on Windows, use :mod:`.bat` files, and if on Linux and macOS use :mod:`.sh` files. You can delete the other files you wont be needing.
+    :mod:`Limer` is the program that ``only`` runs your apps. It's not an IDE or an editor.
+
+Inside the :mod:`Limer` archive, there's a :mod:`toolbox` folder containing files with ``.bat`` and ``.sh`` extensions. If you're using Windows, use the ".bat" files; for Linux and macOS, use the ".sh" files.
 
 Alright, with that sorted out, let's go through these 2 important steps
 
-1. The first step is to download the Limekit framework in your system. Execute the :mod:`download` file to launch the process.
+1. The first step is to download the Limekit framework in your system. Execute the :mod:`download` file in the :mod:`toolbox` folder to download Limekit.
 
-   This process requires an active internet connection.
+   **This process requires an active internet connection.**
 
-2. After successfuly installing Limekit in your system. Execute the :mod:`run` to launch the 
-
-If all goes well, you'll be welcomed by a similar screen shown below
+2. After successfuly installing Limekit in your system. Execute the :mod:`run` in the root folder on :mod:`Limer` to launch the program
+   
+If everything goes as planned, you'll be greeted by a screen similar to the one shown below.
 
 .. image:: images/limekit.png
+
+You can now start learning how to use widgets.

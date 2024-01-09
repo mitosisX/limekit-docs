@@ -14,7 +14,6 @@ checkout :doc:`MenuItems </widgets-items/menu-item>`
 
   It is highly recommended to use the ``buildFromTemplate(template)`` as this saves you a lot of time from individualy creating ``MenuItem`` objects. This powerful features uses tables
 
-
 Properties
 ***************
 

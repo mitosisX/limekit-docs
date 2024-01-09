@@ -22,7 +22,7 @@ Properties
 
 .. function:: setItems(data: table)
 
-  Sets data to the widget. Use the following format: ``{'item 1',' item 2', 'item 3', ...}``
+  Sets data to the widget. Use the following format: ``{'item 1', 'item 2', 'item 3', ...}``
 
 .. function:: addImageItem(data: table)
   

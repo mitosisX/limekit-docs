@@ -31,7 +31,6 @@ For a comprehensive understanding of their usage, explore the available widgets 
    widgets/image
    widgets/knob
    widgets/label
-   widgets/lcd-number
    widgets/line-edit
    widgets/list-box
    widgets/menu
