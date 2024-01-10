@@ -17,7 +17,7 @@ Let's go through them in detail
 
 Themes are what make modern design in Limekit possible.
 
-There are currently 3 categories of themes in Limekit; :mod:`darklight`, :mod:`material` and :mod:`misc`. Use ``getThemes()`` to get themes for a particular theme category, and ``setTheme(theme)`` to set the theme.
+There are currently 3 categories of themes in Limekit; :mod:`darklight`, :mod:`material`, :mod:`darkstyle` and :mod:`misc`. Use ``getThemes()`` to get themes for a particular theme category, and ``setTheme(theme)`` to set the theme.
 
 .. code-block:: lua
 
@@ -175,3 +175,12 @@ Allows you to send notification from your app.
 Properties
 ^^^^^^^^^^^
 
+.. function:: setOnClick(callback)
+
+  Executed when the notification is clicked
+
+.. function:: setMessage{title, message, icon: optional, duration: optional}
+
+  Sets the required attributes of a system notification
+
+  :mod:`duration`, ie, ``2000, 3000, 10000`` and not ``1,2,3,4,5`` for seconds

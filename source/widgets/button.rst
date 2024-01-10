@@ -25,6 +25,7 @@ Properties
   The function executed when the button is clicked
 
 .. function:: setIcon(path)
+  :noindex:
 
   Sets an icon on the button
 

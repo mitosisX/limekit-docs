@@ -1,66 +1,54 @@
-ToolbarItem
+ToolbarButton
+=============
 
-A powerful component designed to manage and display multiple tabs, each hosting distinct set of widgets or layouts but only one item can stay open at a time
-
-.. code-block:: lua
-
-  local accordion = Accordion()
-
-You can add a widget or a layout to the accordion using ``addChild(widget, label, icon: optional)`` or ``addLayout(layout, label, icon: optional)``, respectively. Take a look at the different code snippet below
-
-*Adding a widget*
+A widget/button that can only be used in a :mod:`Toolbar`
 
 .. code-block:: lua
 
-  local button = Button('Click me')
-  accordion:addChild(button, 'All Buttons')
-
-  -- or otherwise with an icon
-
-  local button = Button('Click me')
-  accordion:addChild(button, 'All Buttons', images('icon.png'))
-
-*Adding a layout*
-
-.. code-block:: lua
-
-  local layout = VLayout()
-  local button = Button('Click me')
-
-  layout:addChild(button)
-  accordion:addChild(layout, 'All Buttons')
-
-  -- or otherwise with an icon
-
-  local layout = VLayout()
-  local button = Button('Click me')
-
-  layout:addChild(button)
-  accordion:addChild(layout, 'All Buttons')
-
-*checkout* :doc:`Layout Managers </layouts>`
+  -- setting the title to - (dash) treats it as a separator
+  local homepage = ToolbarButton(title: optional)
 
 Properties
 ***************
 
-.. function:: addChild(widget, label, icon: optional)
+.. function:: setOnClick(callback)
+  :noindex:
+
+  The function executed when the button is clicked
+
+.. function:: setText(text)
+  :noindex:
   
-  Adds a widget in a tab to the accordion with given a label, and icon if necessary
+  Sets the text on the button
 
-.. function:: addLayout(layout, label, icon: optional)
+.. function:: setIcon(path)
+  :noindex:
+
+  Sets an icon on the button
+
+.. function:: setToolTip(tooltip)
   
-  Adds a layout in a tab to the accordion with given a label, and icon if necessary
+  Sets the tooltip for the button
 
-checkout :doc:`Using resources </user-resources>`
+.. function:: setMenu(menu)
+  :noindex:
 
-.. function:: setToolTip(text)
+  Sets a menu for the button
 
-  Enable text that appears when a mouse hovers on the tab
+.. function:: setCheckable(checkable: bool)
 
-.. function:: getCurrentIndex()
+  Allows the button to be checkable or to be toggled
 
-  Gets the current index of the visible tab
+.. function:: isChecked()
+  :noindex:
 
-.. function:: setCurrentIndex(index)
+  Checks if the button is checked/toggles
 
-  Sets the index of the tab to be visible
+.. function:: setChecked(check: bool)
+
+  Checks/toggles the button
+
+.. function:: setVisibility(visible: bool)
+  :noindex:
+
+  Sets the visibility for the button

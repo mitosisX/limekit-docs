@@ -93,17 +93,21 @@ Is a collection of different functions (tools) that your program can use for var
 
    Extracts the content of a zip file to some destination
 
-.. function:: checkIfFolder(path)
+.. function:: isFolder(path)
 
-   Chcks if given path is a folder or not
+   Checks if given path is a folder or not
 
 .. function:: exists(path)
 
    Checks if given path is empty or not
 
-.. function:: checkFolderEmpty()
+.. function:: isFolderEmpty(path)
 
    Checks if a given path is an exmpty dir or not
+
+.. function:: isFileEmpty(file)
+
+   Checks if a given file is exmpty or not
 
 .. function:: getFileSize(file)
 
