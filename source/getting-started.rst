@@ -79,24 +79,24 @@ Head over to `this website <https://www.linuxcapable.com/how-to-install-python-3
 Done installing. What's next?
 ===============================
 
-Head over to `our github repo <https://www.python.org/downloads/release/python-31011/>`_ to download :mod:`Limer`.
+.. important::
 
-There are :mod:`over 35 examples` prepared for your journey in Limekit, just click `here <https://www.python.org/downloads/release/python-31011/>`_ to downlaod them
+    Read the below instructions before downlaoding anything
+
+    All required files should be downloaded from the :mod:`Releases` page (right hand side) in the github links provided
+
+    :mod:`Installation requires an active internet connection`
+
+Head over to `our github repo <https://github.com/mitosisX/Limer-Limekit/>`_ to download :mod:`Limer`.
+
+There are :mod:`over 30 examples` prepared for your journey in Limekit, just click `here <https://github.com/mitosisX/limekit-ui-examples/>`_ to downlaod them
 
 .. note::
 
     :mod:`Limer` is the program that ``only`` runs your apps. It's not an IDE or an editor.
 
-Inside the :mod:`Limer` archive, there's a :mod:`toolbox` folder containing files with ``.bat`` and ``.sh`` extensions. If you're using Windows, use the ".bat" files; for Linux and macOS, use the ".sh" files.
+Download all the zip files from the :mod:`Releases` section and extract them. Inside the windows-only.zip or linuxmac-only.zip there should be a ``READ ME.txt`` file that explains everything.
 
-Alright, with that sorted out, let's go through these 2 important steps
-
-1. The first step is to download the Limekit framework in your system. Execute the :mod:`download` file in the :mod:`toolbox` folder to download Limekit.
-
-   **This process requires an active internet connection.**
-
-2. After successfuly installing Limekit in your system. Execute the :mod:`run` in the root folder on :mod:`Limer` to launch the program
-   
 If everything goes as planned, you'll be greeted by a screen similar to the one shown below.
 
 .. image:: images/limekit.png
