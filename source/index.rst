@@ -1,6 +1,5 @@
-=================================
- Limekit
-=================================
+Limekit
+=============
 
 :Version: |release|
 :Contact: omegamsiskah@gmail.com
@@ -9,7 +8,7 @@
 Let's get you started!
 ==================================
 
-*Limekit* is a framework for building desktop applications using the `lua <https://www.lua.org/>`_ language without the need for HTML and CSS. The framework allows developers to maintain single lua codebase and create cross-platform apps that work on Windows, macOS, and Linux.
+*Limekit* is a framework (wrapper for PySide6) for building desktop applications using the `lua <https://www.lua.org/>`_ language without the need for HTML and CSS. The framework allows developers to maintain single lua codebase and create cross-platform apps that work on Windows, macOS, and Linux.
 
 .. note::
 
@@ -35,12 +34,52 @@ Let's get you started!
 
 * :doc:`Part 7: Batteries included </batteries>`: Covers all the other features provided by the framework, such as the sqlite3 database, using the system tray, displaying system notifications, threads, signals, and many more.
 
+Showcase
+===========
+
+.. image:: showcase/one.png
+   :width: 200
+   
+.. image:: showcase/two.png
+   :width: 200
+
+.. image:: showcase/1.png
+   :width: 200
+
+.. image:: showcase/2.png
+   :width: 200
+
+.. image:: showcase/5.png
+   :width: 200
+
+.. image:: showcase/3.png
+   :width: 200
+
+.. image:: showcase/4.png
+   :width: 200
+
+.. image:: showcase/6.png
+   :width: 200
+
+.. image:: showcase/8.png
+   :width: 200
+
+.. image:: showcase/9.png
+   :width: 200
+
+.. image:: showcase/12.png
+   :width: 200
+
+.. image:: showcase/13.png
+   :width: 200
+
 Getting help
 =============
 
 Having trouble?
 
-Try asking in our `r/limekit <https://www.reddit.com/r/limekit>`_ community
+Head over to our `discord server <https://www.reddit.com/r/limekit>`_
+Try asking in our `r/limekit <https://www.reddit.com/r/limekit>`_ reddit community
 
 Or contact me on omegamsiskah@gmail.com
 

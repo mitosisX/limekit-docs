@@ -8,6 +8,10 @@ This is the fundamental widgets that serves as the main window of any applicatio
   local window = Window{title = 'Limekit', icon = images('app.png'), size={200,200}}
   window:show()
 
+.. important::
+  
+  You should first set a layout to hold all of your widgets.
+
 Properties
 ***************
 
