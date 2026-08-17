@@ -1,57 +1,111 @@
 TextField
-===========
+###########
 
-An input field where users can enter and edit a single line of text. It's commonly used for gathering textual information from users, such as usernames, passwords, search queries, or any other type of short text input. 
+A multi-line text box, for notes, descriptions, logs and anything else too long
+for a :doc:`LineEdit </widgets/line-edit>`.
 
 .. code-block:: lua
 
-  local input = TextField(text: optional)
+  local ui = require("limekit.ui")
 
-.. note::
+  local notes = ui.TextField()
+  notes:setHint("Write something...")
 
-  The next release will include a lot of text formating features
+Text
+***************
 
-Properties
+.. function:: setText(text) / getText()
+  :no-index:
+
+  The contents of the field.
+
+.. function:: setPlainText(text) / getPlainText()
+  :no-index:
+
+  The contents as plain text, with any formatting stripped.
+
+  .. note::
+
+     ``setText`` inspects what you give it and may interpret HTML-looking
+     content as formatting. ``setPlainText`` never does -- reach for it when the
+     text comes from a file or from the user and should be shown exactly as-is.
+
+.. function:: setHtml(html) / getHtml()
+  :no-index:
+
+  The contents as HTML, for when you want bold, colours or links.
+
+.. function:: setHint(text) / getHint()
+  :no-index:
+
+  Greyed-out text shown while the field is empty.
+
+.. function:: setReadOnly(readonly) / isReadOnly()
+  :no-index:
+
+  Lets the user read and select but not edit.
+
+.. function:: appendText(text)
+  :no-index:
+
+  Adds text to the end without disturbing what is already there. This is what
+  you want for a log or console view.
+
+.. function:: clear()
+  :no-index:
+
+  Empties the field.
+
+.. function:: getLineCount()
+  :no-index:
+
+  How many lines the field currently holds.
+
+.. function:: scrollToEnd()
+  :no-index:
+
+  Scrolls to the bottom -- pair it with ``appendText`` to follow a growing log.
+
+  .. code-block:: lua
+
+     local function log(message)
+         notes:appendText(message .. "\n")
+         notes:scrollToEnd()
+     end
+
+Appearance
+***************
+
+.. function:: setTextAlignment(alignment)
+  :no-index:
+
+  Where text sits in the field. Takes the same names as
+  :doc:`Label </widgets/label>`.
+
+.. function:: setTextColor(colour)
+  :no-index:
+
+  The text colour. Accepts a name, a hex string, or an ``{r, g, b}`` table.
+
+.. function:: setTextSize(size)
+  :no-index:
+
+  The font size in points.
+
+.. function:: setWrapMode(mode)
+  :no-index:
+
+  How long lines wrap.
+
+Events
 ***************
 
 .. function:: setOnTextChange(callback)
+  :no-index:
 
-  The function executed text inside changes
+  Runs whenever the text changes.
 
-  :params: ``self`` and ``text``
+.. function:: setOnCursorMove(callback)
+  :no-index:
 
-.. function:: setText(text)
-
-  Sets text in the widget
-
-.. function:: getText()
-
-  Returns the text input
-
-.. function:: setHint(text)
-
-  Sets hint/placeholder text in the widget
-
-.. function:: selectAll()
-
-  Seleects all text
-
-.. function:: setReadOnly(enable: bool)
-
-  Sets widget to read-only or allow input
-
-.. function:: redo()
-
-  Redo text input
-
-.. function:: undo()
-
-  Undo text input
-
-.. function:: setMaxLength()
-
-  Sets the maximum input length in the widget
-  
-.. function:: appendText(text)
-
-  Appends text to the widget
+  Runs when the cursor moves to a different position.

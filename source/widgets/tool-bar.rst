@@ -1,28 +1,73 @@
-ToolBar
-===========
+Toolbar
+###########
 
-A movable panel that contains various interactive elements like buttons, tool buttons, text fields, or other widgets. It's commonly used to provide quick access to frequently used actions or tools within an application.
+A row of buttons for the commands people use most. Toolbars hold
+:doc:`ToolbarButtons </widget-items/toolbar-item>`, and can hold ordinary
+widgets too.
 
 .. code-block:: lua
+  :linenos:
 
-  local toolbar = Toolbar()
+  local ui  = require("limekit.ui")
+  local res = require("limekit.res")
 
-.. admonition:: Hey!
+  local toolbar = ui.Toolbar("Main")
 
-  Check out :doc:`ToolbarButton </widget-items/toolbar-item>` for more
+  local save = ui.ToolbarButton("Save")
+  save:setIcon(res.Resources.images("save.png"))
+  save:setShortcut("Ctrl+S")
+  save:setOnClick(function()
+      saveDocument()
+  end)
 
-Properties
+  toolbar:addButton(save)
+  toolbar:addSeparator()
+  toolbar:addChild(ui.LineEdit())
+
+  window:addToolbar(toolbar, "top")
+
+Contents
 ***************
 
-.. function:: setIconStyle(style)
+.. function:: addButton(button)
+  :no-index:
 
-  Sets the toolbar icon style; ``icononly``, ``textonly``, ``textbesideicon``, ``textundericon``, ``followstyle``
+  Adds a :doc:`ToolbarButton </widget-items/toolbar-item>`.
 
-.. function:: setIconSize(width, height)
-  :noindex:
+.. function:: addChild(child)
+  :no-index:
 
-  Adjusts the icon size for all :mod:`ToolbarButton`
+  Adds an ordinary widget -- a search box, a combo box, a progress bar.
 
-.. function:: addButton(data, startNode, endNode)
+.. function:: addSeparator()
+  :no-index:
 
-  Adds a :mod:`ToolbarButton` to the widget
+  Adds a dividing line between groups of buttons.
+
+Appearance
+***************
+
+.. function:: setToolButtonStyle(style) / getToolButtonStyle()
+  :no-index:
+
+  How buttons are drawn: ``icononly``, ``textonly``, ``textbesideicon``,
+  ``textundericon`` or ``followstyle``.
+
+  .. code-block:: lua
+
+     toolbar:setToolButtonStyle("textundericon")
+
+.. function:: setIconSize(size) / getIconSize()
+  :no-index:
+
+  The button icon size, from a ``{width, height}`` pair.
+
+.. function:: setMovable(movable) / isMovable()
+  :no-index:
+
+  Lets the user drag the toolbar to a different edge.
+
+.. function:: setFloatable(floatable) / isFloatable()
+  :no-index:
+
+  Lets the user pull the toolbar off into its own small window.

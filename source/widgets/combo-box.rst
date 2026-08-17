@@ -1,39 +1,55 @@
 ComboBox
-=============
+###########
 
-A widget that presents a dropdown list of predefined options for users to select from. It's commonly used to offer users a range of choices from a list of items or categories within an application. Users can select one option from the list.
+A drop-down list. Compact when closed, so it suits a choice between many
+options where a set of :doc:`radio buttons </widgets/radio-button>` would take
+too much room.
 
 .. code-block:: lua
 
-  local fruits = ComboBox(data: table)
+  local ui = require("limekit.ui")
 
-  -- or like
-
-  local fruits = ComboBox({'tomato', 'apple', 'pear', 'cherry'})
+  local country = ui.ComboBox({ "Malawi", "Kenya", "Ghana" })
 
 Properties
 ***************
 
-.. function:: setOnItemSelected(callback)
+.. function:: setItems(items)
+  :no-index:
 
-  Executed when an item is selected from the list.
+  Replaces the list with a table of strings.
+
+.. function:: getItemAt(index)
+  :no-index:
+
+  The item at a position. **Positions start at 1.**
+
+  .. code-block:: lua
+
+     print(country:getItemAt(1))   -- Malawi
 
 .. function:: getText()
+  :no-index:
 
-  Gets selected item text
+  The currently selected item.
 
-.. function:: addImageItem(data: table)
-  
-  Add an item with an icon alongside it. Use the following format: ``{'limekit', images('lua.png')}``
+.. function:: clear()
+  :no-index:
 
-.. function:: addImageItems(data: table)
+  Removes every item.
 
-  Same as above method, only acceptng build data. Use the following format: ``{{'limekit', images('lua.png')}, {'apple', images('icon.png')}, ...}``
+.. function:: setEditable(editable) / isEditable()
+  :no-index:
 
-.. function:: addItem(text)
+  Lets the user type a value of their own instead of only picking from the list.
 
-  Adds a single item to the widget
+.. function:: setOnItemSelect(callback)
+  :no-index:
 
-.. function:: setItems(data: table)
+  Runs when the selection changes.
 
-  Sets data to the widget. Use the following format: ``{'item 1',' item 2', 'item 3', ...}``
+  .. code-block:: lua
+
+     country:setOnItemSelect(function(sender)
+         print("selected " .. sender:getText())
+     end)

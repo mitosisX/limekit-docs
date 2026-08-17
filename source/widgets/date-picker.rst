@@ -1,26 +1,43 @@
 DatePicker
-============
+#############
 
-A widget in PyQt specifically designed for editing dates. It provides a user-friendly interface for selecting dates through a calendar or by manually inputting the date. It's handy for tasks requiring date selection or entry, ensuring users can easily input or modify dates in an application
+A compact field for choosing a date, with a drop-down calendar. Use a
+:doc:`Calendar </widgets/calendar>` when you want the whole month on screen.
 
 .. code-block:: lua
 
-  local date = DatePicker()
+  local ui = require("limekit.ui")
+
+  local due = ui.DatePicker()
+  due:setDate(2026, 8, 17)
 
 Properties
 ***************
 
-.. function:: setOnDatePick(callback)
-  :noindex:
+.. function:: setDate(year, month, day)
+  :no-index:
 
-  The function executed when the button is clicked
+  Sets the date shown.
 
-  :params: ``self`` and ``date``
+  .. note::
 
-.. function:: setDate(self, year, month, day, hour: optional, minutes: optional)
-  
-  Sets the date
+     In 1.x this method also took ``hour`` and ``minutes``, which were never
+     displayed -- and the call raised an error every time it was made. A date
+     picker holds a date, so those arguments are gone. For a time, use a
+     :doc:`TimePicker </widgets/time-picker>`.
 
 .. function:: getDate()
-  
-  Returns the date in year-month-day format
+  :no-index:
+
+  The date currently shown.
+
+.. function:: setOnDatePick(callback)
+  :no-index:
+
+  Runs when the date changes.
+
+  .. code-block:: lua
+
+     due:setOnDatePick(function(sender)
+         print("due " .. tostring(sender:getDate()))
+     end)

@@ -1,53 +1,58 @@
 ButtonGroup
-=============
+##############
 
-This widgets helps you manage a group of :doc:`check boxes </widgets/check-box>` or :doc:`radio buttons </widgets/check-box>`, making sure that only one can be selected at a time. It simplifies handling of multiple buttons by letting you know which one's clicked or selected within the group.
+Groups buttons together so they behave as one set of choices, and gives you a
+single handler for all of them.
 
-.. code-block:: lua
-
-  local group = GroupBox()
-
-You can add buttons (radio button and check box) to the widget using the ``addButton(button)``
+A ButtonGroup is not a visible widget -- it has no appearance of its own and is
+not added to a layout. It manages buttons that are laid out normally.
 
 .. code-block:: lua
+  :linenos:
 
-  local maleButton = RadioButton('Male')
-  local femaleButton = RadioButton('Female')
+  local ui = require("limekit.ui")
 
-  group:addButton(maleButton)
-  group:addButton(femaleButton)
+  local small  = ui.RadioButton("Small")
+  local medium = ui.RadioButton("Medium")
+  local large  = ui.RadioButton("Large")
 
-.. important::
-  Don not add the ``ButtonGroup`` to any layout. First, add the button to the ``ButtonGroup``. After that, add the button to any layout you prefer, as shown below.
+  local sizes = ui.ButtonGroup()
+  sizes:addButton(small)
+  sizes:addButton(medium)
+  sizes:addButton(large)
 
-.. code-block:: lua
+  sizes:setOnClick(function(button)
+      print("chose " .. button:getText())
+  end)
 
-  local boolean = RadioButton('True')
-
-  group:addButton(boolean)
-  layout:addChild(boolean)
+  -- the buttons still go in a layout as usual
+  local layout = ui.HLayout()
+  layout:addChild(small)
+  layout:addChild(medium)
+  layout:addChild(large)
 
 Properties
 ***************
 
-.. function:: addChild(widget, label, icon: optional)
-  
-  Adds a widget in a tab to the accordion with a given label, and an icon if necessary
+.. function:: addButton(button)
+  :no-index:
 
-.. function:: addLayout(layout, label, icon: optional)
-  
-  Adds a layout in a tab to the accordion with a given label, and an icon if necessary
+  Adds a button to the group.
 
-checkout :doc:`Using resources </user-resources>`
+.. function:: removeButton(button)
+  :no-index:
 
-.. function:: setToolTip(text)
+  Removes a button from the group.
 
-  Tooltips are brief informational messages that appear when the user hovers the mouse pointer over the tab
+.. function:: setExclusive(exclusive) / isExclusive()
+  :no-index:
 
-.. function:: getCurrentIndex()
+  Whether only one button in the group may be selected at a time. On by
+  default -- turn it off to let the group act as a set of independent toggles
+  that still share one handler.
 
-  Gets the current index of the visible tab
+.. function:: setOnClick(callback)
+  :no-index:
 
-.. function:: setCurrentIndex(index)
-
-  Sets the index of the tab to be visible
+  Runs when any button in the group is clicked. The handler receives the button
+  that was clicked, not the group.

@@ -1,47 +1,41 @@
-===========
-MenuBar
-===========
+Menubar
+###########
 
-This widget provides a horizontal bar typically placed at the top of the application window, containing various menus. Each menu can hold menu items, which when clicked, can trigger specific actions or open sub-menus. The MenuBar widget is an essential component for organizing and providing access to different functionalities or commands within an application.
+The strip of menus along the top of a window.
 
 .. code-block:: lua
+  :linenos:
 
-  local menubar = MenuBar()
+  local ui = require("limekit.ui")
 
-checkout :doc:`MenuItems </widgets-items/menu-item>`
+  local menubar = ui.Menubar()
 
-.. note::
+  local file = ui.Menu("File")
+  file:addMenuItem(ui.MenuItem("New"))
+  file:addMenuItem(ui.MenuItem("Open"))
 
-  It is highly recommended to use the ``buildFromTemplate(template)`` as this saves you a lot of time from individualy creating ``MenuItem`` objects. This powerful features uses tables
+  local help = ui.Menu("Help")
+  help:addMenuItem(ui.MenuItem("About"))
 
-Properties
+  menubar:addMenu(file)
+  menubar:addMenu(help)
+
+  window:setMenubar(menubar)
+
+.. important::
+
+  A menubar only appears once you attach it to a window with
+  ``window:setMenubar(menubar)``.
+
+Contents
 ***************
 
-.. function:: buildFromTemplate(template: table)
+.. function:: addMenu(menu)
+  :no-index:
 
-  A powerful features that allows developing complex menus using tables. 
+  Adds a :doc:`Menu </widgets/menu>` to the bar.
 
-  .. code-block:: lua
+.. function:: addMenuItem(item)
+  :no-index:
 
-    local menubar = MenuBar();
-    menubar:buildFromTemplate({{
-          label = '&File',
-          submenu = {{
-              label = 'New File',
-              name = 'new_file',
-              shortcut = "Ctrl+N",
-              icon = images('newfile.png'),
-              click = createFileFunc}}
-        },
-        {
-          label = 'Help',
-          submenu = {{
-            label = 'About'}}
-        }})
-
-- The preceding code example illustrates the capabilities of the ``buildFromTemplate`` function, showcasing its power in creating a sample menubar using tables
-
-.. function:: getChild(name)
-
-  Returns the ``MenuItem`` widget assigned with the name. This only applies when ``name`` was used on a ``submenu`` inside ``buildFromTemplate``.
-
+  Adds a single command directly to the bar, without a menu around it.

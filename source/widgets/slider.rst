@@ -1,35 +1,54 @@
 Slider
-===========
+###########
 
-A widget that lets users select a value from a range by sliding a handle or by clicking at specific points along a track allowing them to set a value according to the position of the handle.
+A handle dragged along a track to pick a number. Good for volume, brightness,
+and anything where the rough position matters more than the exact figure.
 
 .. code-block:: lua
 
-  local slider = Slider()
+  local ui = require("limekit.ui")
+
+  local volume = ui.Slider()
+  volume:setRange(0, 100)
+  volume:setValue(50)
+
+Sliders are horizontal unless you say otherwise.
 
 Properties
 ***************
 
-.. function:: setRange(start, end)
-  :noindex:
+.. function:: setValue(value) / getValue()
+  :no-index:
 
-  Sets the slider's range
+  The current number.
 
-.. function:: setValue(value)
-  :noindex:
+.. function:: setRange(start, end_)
+  :no-index:
 
-  Sets the current value
+  The lowest and highest values.
 
-.. function:: getValue()
+.. function:: setOrientation(orientation) / getOrientation()
+  :no-index:
 
-  Returns the current value
+  ``horizontal`` or ``vertical``.
 
-.. function:: setOrientation(orientation)
+  .. code-block:: lua
 
-  Sets the orientation: ``horizontal`` or ``vertical``
+     volume:setOrientation("vertical")
 
-.. function:: setTickPosition(position)
+.. function:: setTickPosition(position) / getTickPosition()
+  :no-index:
 
-  Sets the position of tick marks on a slider
+  Where the tick marks are drawn: ``none``, ``above``, ``below``, ``left``,
+  ``right`` or ``bothsides``.
 
-  :mod:`Positions`: ``none``, ``above``, ``left``, ``below``, ``right`` and ``bothsides``
+.. function:: setOnValueChange(callback)
+  :no-index:
+
+  Runs as the handle moves. The handler receives the slider and the new value.
+
+  .. code-block:: lua
+
+     volume:setOnValueChange(function(sender, value)
+         label:setText("Volume: " .. value)
+     end)

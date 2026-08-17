@@ -1,71 +1,39 @@
 Calendar
 ###########
 
-A powerful component designed to manage and display multiple tabs, each hosting distinct set of widgets or layouts.
+A full month view the user can page through and pick a day from. When you only
+need a compact field, use a :doc:`DatePicker </widgets/date-picker>`.
 
 .. code-block:: lua
 
-  local accoridon = Accordion()
+  local ui = require("limekit.ui")
 
-You can add add a widget or a layout to the accordion using ``addChild(widget, label, icon: optional)`` or ``addLayout(layout, label, icon: optional)``, respectively. Take a look at the different code snippet below
+  local calendar = ui.Calendar()
+  calendar:setDate(2026, 8, 17)
 
-*Adding a widget*
-
-.. code-block:: lua
-
-  local button = Button('Click me')
-  accordion:addChild(button, 'All Buttons')
-
-  -- or otherwise with an icon
-
-  local button = Button('Click me')
-  accordion:addChild(button, 'All Buttons', images('icon.png'))
-
-*Adding a layout*
-
-.. code-block:: lua
-
-  local layout = VLayout()
-  local button = Button('Click me')
-
-  layout:addChild(button)
-  accordion:addChild(layout, 'All Buttons')
-
-  -- or otherwise with an icon
-
-  local layout = VLayout()
-  local button = Button('Click me')
-
-  layout:addChild(button)
-  accordion:addChild(layout, 'All Buttons')
-
-*checkout* :doc:`Layout Managers </layouts>`
+  calendar:setOnDatePicked(function(sender)
+      print(sender:getDate())
+  end)
 
 Properties
 ***************
 
-.. function:: addChild(widget, label, icon: optional)
-  
-  Adds a widget in a tab to the accordion with given a label, and icon if necessary
+.. function:: setDate(year, month, day)
+  :no-index:
 
-.. function:: addLayout(layout, label, icon: optional)
-  
-  Adds a layout in a tab to the accordion with given a label, and icon if necessary
+  Selects a date.
 
-checkout :doc:`Using resources </user-resources>`
+.. function:: getDate()
+  :no-index:
 
-.. function:: setGridVisible(visible: bool)
+  The selected date.
 
-  Show or hide grid lines on the calendar
+.. function:: setGridVisible(visible) / isGridVisible()
+  :no-index:
 
-.. function:: setToolTip(text)
+  Whether grid lines are drawn between the days.
 
-  Enable text that appears when a mouse hovers on the tab
+.. function:: setOnDatePicked(callback)
+  :no-index:
 
-.. function:: getCurrentIndex()
-
-  Gets the current index of the visible tab
-
-.. function:: setCurrentIndex(index)
-
-  Sets the index of the tab to be visible
+  Runs when the user picks a date.

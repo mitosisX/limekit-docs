@@ -1,66 +1,106 @@
 Button
 ###########
 
-The button, one of the mostly used widget in any Graphical User Interface (GUI). You can label it with text or even include icons to make it more visually informative. It's commonly used to trigger actions or functions within an application when clicked.
+One of the most used widgets in any interface. Label it with text, an icon, or
+both, and give it something to do when it is clicked.
 
 .. code-block:: lua
 
-  local button = Button(text)
+  local ui = require("limekit.ui")
 
-This is done by calling a callback function after clicking on a button. You can specify such a callback function with the ``setOnClick`` method
+  local button = ui.Button("Save")
+
+You react to a click with ``setOnClick``:
 
 .. code-block:: lua
   :linenos:
 
   button:setOnClick(function(sender)
-    -- some task here
+      print("clicked")
   end)
+
+The handler receives the button itself as ``sender``, which is handy when
+several buttons share one function.
+
+.. note::
+
+  If your handler raises an error, Limekit reports it naming ``Button.onClick``
+  and the app keeps running. See :doc:`Core concepts </concepts>`.
 
 Properties
 ***************
 
 .. function:: setOnClick(callback)
-  :noindex:
+  :no-index:
 
-  The function executed when the button is clicked
+  The function executed when the button is clicked.
 
-.. function:: setIcon(path)
-  :noindex:
+.. function:: setText(text) / getText()
+  :no-index:
 
-  Sets an icon on the button
+  The button's label.
 
-checkout :doc:`Using resources </user-resources>`
+.. function:: setIcon(path) / getIcon()
+  :no-index:
 
-.. function:: setIconSize(width, height)
-  
-  Resizes the icon set in the button
+  Sets an icon on the button.
 
-.. function:: setText(text)
-  
-  Sets text on the button
+  .. code-block:: lua
 
-.. function:: getText()
+     local res = require("limekit.res")
+     button:setIcon(res.Resources.images("save.png"))
 
-  Returns text on the button
+  See :doc:`Services </services>` for resolving resource paths.
 
-.. function:: setFlat()
+.. function:: setIconSize(size)
+  :no-index:
 
-  Makes the button appear flat
+  Resizes the icon, from a ``{width, height}`` pair.
 
-.. function:: setCheckable(checkable: bool)
+  .. code-block:: lua
 
-  Set whether or not the button can be checked/toggled
+     button:setIconSize({ 24, 24 })
 
-.. function:: isChecked()
+.. function:: setFlat(flat) / isFlat()
+  :no-index:
 
-  Return the check/toggle status of the button
+  Draws the button without its raised border.
+
+.. function:: setCheckable(checkable) / isCheckable()
+  :no-index:
+
+  Whether the button can be toggled on and off rather than just pressed.
+
+.. function:: setChecked(checked) / isChecked()
+  :no-index:
+
+  The toggle state. Only meaningful on a checkable button.
+
+  .. code-block:: lua
+
+     local mute = ui.Button("Mute")
+     mute:setCheckable(true)
+     mute:setOnClick(function(sender)
+         if sender:isChecked() then
+             print("muted")
+         else
+             print("unmuted")
+         end
+     end)
+
+.. function:: toggle()
+  :no-index:
+
+  Flips the checked state.
+
+.. function:: click()
+  :no-index:
+
+  Clicks the button from code, running its ``onClick`` handler.
 
 .. function:: setMenu(menu)
+  :no-index:
 
-  Sets menu to the button
+  Attaches a menu that drops down when the button is pressed.
 
-.. function:: setMargins(left, top,right,bottom)
-
-  Sets the margins of the button
-
-checkout :doc:`working with menus </widgets/menu>`
+  See :doc:`working with menus </widgets/menu>`.

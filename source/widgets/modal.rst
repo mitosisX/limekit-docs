@@ -1,90 +1,98 @@
 Modal
-===========
+###########
 
-A window that pops up to interact with users, often for specific tasks or information gathering. It's a specialized window used to prompt users for input, display information, or perform actions that require user interaction.
+A secondary window for a focused task -- preferences, a login form, a
+confirmation with more to it than a plain
+:doc:`dialog </services>` can express.
 
 .. code-block:: lua
+  :linenos:
 
-  local modal = Modal(window, title)
-  modal:show()
+  local ui = require("limekit.ui")
 
-.. note::
+  local prefs = ui.Modal("Preferences")
 
-  You can only set one primary layout for each modal
+  local inner = ui.VLayout()
+  inner:addChild(ui.CheckBox("Start on login"))
+
+  local close = ui.Button("Done")
+  close:setOnClick(function()
+      prefs:dismiss()
+  end)
+  inner:addChild(close)
+
+  prefs:setLayout(inner)
+  prefs:show()
+
+Showing and closing
+**********************
+
+.. function:: show()
+  :no-index:
+
+  Shows the modal without blocking. Your code carries on running.
+
+.. function:: open()
+  :no-index:
+
+  Shows the modal and **waits** until it is closed before returning. Use this
+  when the next line of your code depends on the user's answer.
+
+  .. code-block:: lua
+
+     prefs:open()
+     print("the user has finished with the dialog")
+
+  .. important::
+
+     In 1.x, ``show()`` blocked -- it did what ``open()`` does now. If you are
+     porting an app that relied on that, change ``show()`` to ``open()``.
+     Everywhere else in Limekit, ``show()`` does not block, and now this widget
+     agrees.
+
+.. function:: dismiss()
+  :no-index:
+
+  Closes the modal.
 
 Properties
 ***************
 
+.. function:: setLayout(layout) / getLayout()
+  :no-index:
+
+  The layout held inside.
+
+.. function:: setTitle(text) / getTitle()
+  :no-index:
+
+  The text in the title bar.
+
+.. function:: setIcon(path) / getIcon()
+  :no-index:
+
+  The window icon.
+
+.. function:: setModal(modal) / isModal()
+  :no-index:
+
+  Whether the rest of the app is blocked while this window is open. On by
+  default.
+
+Events
+***************
+
 .. function:: setOnShown(callback)
-  
-  Executed whenever the window is shown or displayed on the screen.
+  :no-index:
+
+  Runs when the modal is shown.
 
 .. function:: setOnClose(callback)
-  
-  Executed when the window is closing.
+  :no-index:
 
-  :params: ``self`` and ``event``: use :mod:`ignore()` and :mod:`accept()` on ``event``; ``event.ignore()`` or ``event.accept()``
-  
+  Runs when the modal is closed.
+
 .. function:: setOnResize(callback)
-  
-  Executed whenever the window is being resized.
+  :no-index:
 
-.. function:: minimize()
-  
-  Minimizes or iconifies a window to the system taskbar or dock. It shrinks the window and places an icon representing the window in the taskbar or dock, allowing users to easily restore the window later
-
-.. function:: setMinSize(width, height)
-
-  Sets the minimum size
-
-.. function:: setMaxHeight(height)
-
-  Sets the maximum height
-
-.. function:: setMinHeight(height)
-
-  Sets the minimum height
-
-.. function:: setMaxWidth(width)
-
-  Sets the maximum width
-
-.. function:: setMinWidth(width)
-
-  Sets the minimum width
-
-.. function:: setMaxSize(width, height)
-
-  Sets the maximum size
-
-.. function:: setTitle(title)
-
-  Sets the title for the window
-
-.. function:: setMainWidget(widget)
-
-  Sets any widget as the central widget, causing it to take up the available space.
-
-.. function:: setSize(width, height)
-
-  Sets the size of the window
-
-.. function:: setLayout(layout)
-
-  Sets a primary layout for the window
-
-.. function:: setIcon(path)
-
-  Sets the icon for the window
-
-.. function:: setFixedSize(width, height)
-
-  Sets a fixed size to restrict resizing the window
-
-.. function:: show()
-
-  Shows the window
-
-.. function:: dismiss()
-
-  Closes the modal
+  Runs when the modal is resized.

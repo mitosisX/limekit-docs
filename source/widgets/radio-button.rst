@@ -1,53 +1,60 @@
 RadioButton
-=============
+##############
 
-This functions as a button that allows toggling between being selected (checked) or deselected (unchecked). Generally, these buttons offer users a choice among several options where only one can be selected at a time. Within a set of radio buttons, selecting a new option automatically deselects the previously chosen one.
+One choice out of several. Radio buttons in the same container are mutually
+exclusive -- ticking one unticks the rest.
+
+.. code-block:: lua
+
+  local ui = require("limekit.ui")
+
+  local small  = ui.RadioButton("Small")
+  local medium = ui.RadioButton("Medium")
+  local large  = ui.RadioButton("Large")
+
+  medium:setChecked(true)
+
+.. note::
+
+  Exclusivity is decided by which container the buttons share. If you need two
+  independent groups in one place, put each in its own
+  :doc:`GroupBox </widgets/group-box>` or
+  :doc:`ButtonGroup </widgets/button-group>`.
 
 Properties
 ***************
 
-.. code-block:: lua
+.. function:: setText(text) / getText()
+  :no-index:
 
-  local check = RadioButton(text)
+  The label beside the button.
 
-.. function:: setOnCheck(callback)
+.. function:: setChecked(checked) / isChecked()
+  :no-index:
 
-  Executed when checked. Arguments passed include self and state.
+  Whether this option is the selected one.
 
-.. function:: setIcon(path)
+.. function:: setIcon(path) / getIcon()
+  :no-index:
 
-  Sets an icon on the radio button
+  An icon shown alongside the label.
 
-checkout :doc:`Using resources </user-resources>`
+.. function:: setIconSize(size) / getIconSize()
+  :no-index:
 
-.. function:: setIconSize(width, height)
-  
-  Sets the icon size
+  The icon size, from a ``{width, height}`` pair.
 
-.. function:: setToolTip(text)
+.. function:: setOnClick(callback)
+  :no-index:
 
-  Tooltips are brief informational messages that appear when the user hovers the mouse pointer over the tab
+  Runs when the button is chosen.
 
-.. function:: setToolTipDuration(duration)
+  .. code-block:: lua
 
-  Set how long the tooltip displays
+     local function chooseSize(sender)
+         print("size: " .. sender:getText())
+     end
 
-.. function:: getToolTip()
-
-  Returns the tooltip text
-
-.. function:: getCheck()
-
-  Returns check status; ``true`` or ``false``
-
-.. function:: setCheck(check: bool)
-
-  Sets the box to be checked or not
-
-.. function:: setText(text)
-
-  Sets the radio button text
-
-.. function:: getText()
-
-  Gets the radio button button
+     small:setOnClick(chooseSize)
+     medium:setOnClick(chooseSize)
+     large:setOnClick(chooseSize)

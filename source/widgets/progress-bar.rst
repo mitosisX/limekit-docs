@@ -1,28 +1,37 @@
 ProgressBar
-=============
+##############
 
-A visual widget that shows the progress of a task or an operation. It appears as a bar that fills up gradually, representing the completion status of a process.
+Shows how far along a task is.
 
 .. code-block:: lua
 
-  local progress = ProgressBar()
+  local ui = require("limekit.ui")
+
+  local progress = ui.ProgressBar()
+  progress:setRange(0, 100)
+  progress:setValue(0)
+
+.. important::
+
+  A progress bar only redraws when the interface is free to do so. If you
+  update it inside a long loop on the main thread, the window freezes and the
+  bar appears stuck. Do the slow work in a :doc:`Thread </batteries>` and update
+  the bar from a :doc:`Signal </batteries>`.
 
 Properties
 ***************
 
-.. function:: setRange(start, end)
-  :noindex:
+.. function:: setValue(value) / getValue()
+  :no-index:
 
-  Sets the progress range
+  How far along the task is.
 
-.. function:: setValue(value)
+.. function:: setRange(start, end_)
+  :no-index:
 
-  Sets the current value
+  The values that count as empty and full.
 
-.. function:: getValue()
+.. function:: setOrientation(orientation) / getOrientation()
+  :no-index:
 
-  Returns the current value
-
-.. function:: setOrientation(orientation)
-
-  Sets the orientation: ``horizontal`` or ``vertical``
+  ``horizontal`` or ``vertical``.

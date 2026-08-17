@@ -1,54 +1,42 @@
 CheckBox
-=============
+###########
 
-A small box that can be checked or unchecked by users. It's used to toggle something on or off in an application, like enabling or disabling a feature or selecting options.
+A box the user can tick. Use it for settings that are independently on or off --
+when the options are mutually exclusive, use a
+:doc:`RadioButton </widgets/radio-button>` instead.
 
 .. code-block:: lua
 
-  local check = CheckBox(text)
+  local ui = require("limekit.ui")
+
+  local remember = ui.CheckBox("Remember me")
+  remember:setChecked(true)
 
 Properties
 ***************
 
+.. function:: setText(text) / getText()
+  :no-index:
+
+  The label beside the box.
+
+.. function:: setChecked(checked) / isChecked()
+  :no-index:
+
+  Whether the box is ticked.
+
 .. function:: setOnCheck(callback)
-  :noindex:
+  :no-index:
 
-  Executed when checked. Arguments passed include self and state.
+  Runs when the box is ticked or unticked. The handler receives the checkbox,
+  so you can read its new state straight away.
 
-.. function:: setIcon(path)
+  .. code-block:: lua
 
-  Sets an icon on the check box
-
-checkout :doc:`Using resources </user-resources>`
-
-.. function:: setIconSize(width, height)
-  
-  Sets the icon size
-
-.. function:: setToolTip(text)
-
-  Tooltips are brief informational messages that appear when the user hovers the mouse pointer over the tab
-  
-.. function:: getTooltip()
-
-  Returns the tooltip text
-
-.. function:: setToolTipDuration(check: bool)
-
-  Set how long the tooltip displays
-
-.. function:: getCheck()
-
-  Returns check status; true or false
-
-.. function:: setCheck(check: bool)
-
-  Sets the box to be checked or not
-
-.. function:: setText(text)
-
-  Sets the check box text
-
-.. function:: getText()
-
-  Gets the check box button
+     remember:setOnCheck(function(sender)
+         if sender:isChecked() then
+             print("will remember")
+         else
+             print("will forget")
+         end
+     end)

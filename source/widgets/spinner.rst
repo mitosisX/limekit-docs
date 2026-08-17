@@ -1,39 +1,53 @@
 Spinner
-===========
+###########
 
-A widget that allows users to input integer values within a specified range. It provides a convenient interface for users to select numbers by either typing directly into the box or by using up and down arrow buttons to increase or decrease the value
+A number box with up and down arrows, for whole numbers. For decimals use a
+:doc:`DoubleSpinner </widgets/double-spinner>`.
 
 .. code-block:: lua
 
-  local dock = Spinner()
+  local ui = require("limekit.ui")
+
+  local quantity = ui.Spinner()
+  quantity:setRange(1, 99)
+  quantity:setValue(1)
 
 Properties
 ***************
 
+.. function:: setValue(value) / getValue()
+  :no-index:
+
+  The current number.
+
+.. function:: setRange(start, end_)
+  :no-index:
+
+  The lowest and highest numbers allowed.
+
+.. function:: setPrefix(text) / getPrefix()
+  :no-index:
+
+  Text shown before the number.
+
+.. function:: setSuffix(text) / getSuffix()
+  :no-index:
+
+  Text shown after the number -- useful for units.
+
+  .. code-block:: lua
+
+     local delay = ui.Spinner()
+     delay:setRange(0, 60)
+     delay:setSuffix(" seconds")
+
 .. function:: setOnValueChange(callback)
-  :noindex:
+  :no-index:
 
-  The function executed when the value changes
+  Runs whenever the number changes, whether typed or clicked.
 
-  :params: ``self`` and ``value``
+  .. code-block:: lua
 
-.. function:: setRange(start, end)
-  
-  Sets the ``minimum`` and ``maximum`` values for the widget
-
-.. function:: setValue(value)
-  
-  Sets the value displayed on the widget
-
-.. function:: getValue()
-  :noindex:
-  
-  Returns the current value
-
-.. function:: setPrefix(prefix)
-  
-  Set the prefix of the spinner widget
-
-.. function:: setSuffix(suffix)
-  
-  Set the suffix of the spinner widget
+     quantity:setOnValueChange(function(sender)
+         updateTotal(sender:getValue())
+     end)

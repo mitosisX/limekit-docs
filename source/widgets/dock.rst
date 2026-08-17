@@ -1,37 +1,100 @@
 Dock
-=======
+###########
 
-A versatile element used to create dockable panes or windows within an application's main window. These dock widgets can be moved, resized, and placed in various positions, such as docking them to the edges or floating them as separate windows. They're commonly used to provide additional panels or toolbars that users can arrange according to their preferences for a more customized user interface experience.
+A panel attached to an edge of the window that the user can move, float as a
+separate window, or close. Tool palettes and side panels are the usual use.
 
 .. code-block:: lua
+  :linenos:
 
-  local dock = Dock()
+  local ui = require("limekit.ui")
 
-Properties
+  local tools = ui.Dock("Tools")
+
+  local inner = ui.VLayout()
+  inner:addChild(ui.Button("Brush"))
+  inner:addChild(ui.Button("Eraser"))
+  tools:setLayout(inner)
+
+  window:addDockable(tools, "left")
+
+.. note::
+
+  The 1.x name ``Dockable`` still works and refers to this same widget.
+
+Contents
 ***************
 
-.. function:: setProperties(properties)
-  :noindex:
+.. function:: ui.Dock(title)
+  :no-index:
 
-  Sets rules on how the dock widget behaves. Available properties include ``floatable``, ``movable``, ``closable`` and ``nil``
+  Creates a dock panel.
 
-  :param properties: lua table 
+.. function:: setLayout(layout) / getLayout()
+  :no-index:
 
-.. function:: setMagneticAreas(areas)
-  
-  Sets the areas the dock widget is allowed to float to. Available areas include ``left``, ``top``, ``right``, ``bottom``, ``all`` and ``nil``
+  The layout held inside.
 
-  :param areas: lua table 
+.. function:: setChild(child) / getChild()
+  :no-index:
 
-.. function:: setTitle(text)
-  
-  Sets text displayed on the dock widget
+  A single widget inside, instead of a layout.
 
-.. function:: addChild(child)
-  :noindex:
-  
-  Add a widget to the widget
+.. function:: setTitleBarChild(child)
+  :no-index:
 
-.. function:: setLayout(layout)
-  
-  Add a layout to the widget
+  Replaces the title bar with a widget of your own.
+
+Behaviour
+***************
+
+.. function:: setAllowedAreas(...)
+  :no-index:
+
+  Which edges the panel may be docked to: ``left``, ``right``, ``top``,
+  ``bottom``, ``all`` or ``none``. Pass as many as you like.
+
+  .. code-block:: lua
+
+     tools:setAllowedAreas("left", "right")
+
+  .. note::
+
+     This replaces 1.x's ``setMagneticAreas``, which silently ignored any area
+     name it did not recognise. An unknown name now raises an error.
+
+.. function:: setFeatures(...)
+  :no-index:
+
+  Which of move, float and close the user is allowed to do.
+
+.. function:: setFloating(floating) / isFloating()
+  :no-index:
+
+  Whether the panel is detached from the window.
+
+Appearance
+***************
+
+.. function:: setTitle(text) / getTitle()
+  :no-index:
+
+  The heading on the panel.
+
+.. function:: setIcon(path) / getIcon()
+  :no-index:
+
+  An icon shown in the title bar.
+
+Events
+***************
+
+.. function:: setOnLocationChange(callback)
+  :no-index:
+
+  Runs when the panel is docked to a different edge.
+
+.. function:: setOnVisibilityChange(callback)
+  :no-index:
+
+  Runs when the panel is shown or hidden.

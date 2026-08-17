@@ -1,54 +1,110 @@
 ToolbarButton
-=============
+################
 
-A widget/button that can only be used in a :mod:`Toolbar`
+A button on a :doc:`Toolbar </widgets/tool-bar>`.
 
 .. code-block:: lua
+  :linenos:
 
-  -- setting the title to - (dash) treats it as a separator
-  local homepage = ToolbarButton(title: optional)
+  local ui  = require("limekit.ui")
+  local res = require("limekit.res")
+
+  local save = ui.ToolbarButton("Save")
+  save:setIcon(res.Resources.images("save.png"))
+  save:setToolTip("Save the current document")
+  save:setShortcut("Ctrl+S")
+  save:setOnClick(function()
+      saveDocument()
+  end)
+
+  toolbar:addButton(save)
+
+.. important::
+
+  Toolbar buttons are often shown as icons only, with no text. Always set a
+  tooltip -- it is the only way a user finds out what an unfamiliar icon does.
 
 Properties
 ***************
 
-.. function:: setOnClick(callback)
-  :noindex:
+.. function:: setText(text) / getText()
+  :no-index:
 
-  The function executed when the button is clicked
+  The button's label.
 
-.. function:: setText(text)
-  :noindex:
-  
-  Sets the text on the button
+.. function:: setIcon(path) / getIcon()
+  :no-index:
 
-.. function:: setIcon(path)
-  :noindex:
+  The button's icon.
 
-  Sets an icon on the button
+.. function:: setShortcut(sequence) / getShortcut()
+  :no-index:
 
-.. function:: setToolTip(tooltip)
-  
-  Sets the tooltip for the button
+  A keyboard shortcut such as ``"Ctrl+S"``.
+
+.. function:: setToolTip(text) / getToolTip()
+  :no-index:
+
+  The tooltip shown on hover.
+
+.. function:: setStatusTip(text) / getStatusTip()
+  :no-index:
+
+  Text shown in the :doc:`StatusBar </widgets/status-bar>` on hover.
+
+.. function:: setEnabled(enabled) / isEnabled()
+  :no-index:
+
+  Whether the button can be pressed.
+
+.. function:: setVisible(visible) / isVisible()
+  :no-index:
+
+  Whether the button appears.
+
+.. function:: setSeparator(separator) / isSeparator()
+  :no-index:
+
+  Turns the button into a dividing line.
 
 .. function:: setMenu(menu)
-  :noindex:
+  :no-index:
 
-  Sets a menu for the button
+  Attaches a :doc:`DropMenu </widgets/drop-menu>` that opens when the button is
+  pressed.
 
-.. function:: setCheckable(checkable: bool)
+Toggle buttons
+***************
 
-  Allows the button to be checkable or to be toggled
+.. function:: setCheckable(checkable) / isCheckable()
+  :no-index:
 
-.. function:: isChecked()
-  :noindex:
+  Lets the button stay pressed, for a mode that is on or off.
 
-  Checks if the button is checked/toggles
+.. function:: setChecked(checked) / isChecked()
+  :no-index:
 
-.. function:: setChecked(check: bool)
+  The pressed state.
 
-  Checks/toggles the button
+  .. note::
 
-.. function:: setVisibility(visible: bool)
-  :noindex:
+     In 1.x ``isChecked()`` raised an error every time it was called. It returns
+     a boolean now.
 
-  Sets the visibility for the button
+.. function:: toggle()
+  :no-index:
+
+  Flips the pressed state.
+
+Events
+***************
+
+.. function:: setOnClick(callback)
+  :no-index:
+
+  Runs when the button is pressed.
+
+.. function:: trigger()
+  :no-index:
+
+  Presses the button from code.

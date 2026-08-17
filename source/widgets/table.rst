@@ -1,166 +1,193 @@
 Table
-===========
+###########
 
-A widget where users can view, edit, and interact with data presented in a grid-like format. It allows developers to populate the table with data, set headers for rows and columns, and enable users to edit cell contents. This widget offers functionalities to manage and manipulate tabular data, including sorting, selecting cells, adding or removing rows/columns dynamically. It's a powerful tool for displaying structured data or creating spreadsheet-like interfaces.
+A grid of rows and columns, for spreadsheet-like data.
 
 .. code-block:: lua
+  :linenos:
 
-  local table = Table(rows, columns) -- optional parameters; specfies number of rows and columns
+  local ui = require("limekit.ui")
+
+  local sheet = ui.Table(3, 2)
+  sheet:setColumnHeaders({ "Name", "Score" })
+
+  sheet:setCellText(1, 1, "Ada")
+  sheet:setCellText(1, 2, "98")
+  sheet:setCellText(2, 1, "Grace")
+  sheet:setCellText(2, 2, "95")
 
 .. important::
 
-  Row and column indexing starts at :mod:`0`
+  **Rows and columns start at 1.** The top-left cell is ``(1, 1)``.
 
-Properties
+  This changed in 2.0 -- the 1.x Table counted from 0. Passing ``0`` now raises
+  an error rather than quietly touching the wrong cell.
+
+Size
 ***************
 
-.. function:: setOnCellEditFinished(callback)
+.. function:: ui.Table(rows, columns)
+  :no-index:
 
-  Executed when user finishes editing a particular cell
+  Creates a table of a given size. Both default to 0.
 
-.. function:: setOnCellClicked(callback)
+.. function:: setRowCount(rows) / getRowCount()
+  :no-index:
 
-  Executed when a cell was clicked
+  How many rows the table has.
 
-.. function:: setOnCellDoubleClicked(callback)
+.. function:: setColumnCount(columns) / getColumnCount()
+  :no-index:
 
-  Executed when a cell gets double clicked
+  How many columns the table has.
 
-.. function:: setOnCellSelection(callback)
+.. function:: addRow()
+  :no-index:
 
-  Executed when a cell is selected
+  Appends an empty row to the bottom.
 
-  :params: self, row, column
+.. function:: insertRowAt(row) / removeRowAt(row)
+  :no-index:
 
-.. function:: addData(row, column, text)
+  Inserts or removes a row at a position.
 
-  Adds text to row and column
-  
-.. function:: setImageData(image, text, row, column)
+.. function:: insertColumnAt(column) / removeColumnAt(column)
+  :no-index:
 
-  Sets an image and text on specified row and column
-
-.. function:: setColumnHeaders(columns: table)
-
-  Sets columns for the widget,ie, ``{'Name', 'Age', 'Location', ...}``
-
-.. function:: setRowHeaders(headers: table)
-
-  Same as above property
-
-.. function:: getCurrentColumn()
-
-  Returns the current column
-
-.. function:: getCurrentRow()
-
-  Returns the current row
-
-.. function:: setMaxColumns(columns)
-
-  Sets the maximum columns for the widget
-
-.. function:: setMaxRows(rows)
-
-  Sets the maximum rows for the widget
-
-.. function:: setColumnHeaderToolTip(column: number)
-
-  Sets the tooltip for a particular header index
-
-.. function:: getColumnHeaderText(column: number)
-
-  Returns the column header text
-
-.. function:: getColumnsCount()
-
-  Returns total columns in the widget
-
-.. function:: getRowsCount()
-
-  Returns total rows in the widget
-
-.. function:: setGridVisible(visibility)
-  :noindex:
-
-  Sets grid-lines visibility for the widget
-
-.. function:: setRowLabelsVisible(visibility)
-
-  Sets the visibility for row labels; ``1,2,3,4,5`` on the left hand side
-
-.. function:: setCellChild(row, column, child)
-
-  Sets a widget on a particular row and column
-
-.. function:: setAutoColumnResize()
-
-  Sets columns to automatically adjust to content
-
-.. function:: setAutoRowResize()
-
-  Sets rows to automatically adjust to content
-
-.. function:: setColumnFitsContent(column)
-
-  Manually adjust a particular column
-
-.. function:: deleteRow(row)
-
-  Deletes a particular row
-
-.. function:: setCellsEditable(editable: bool)
-
-  Enables or disables cell editing
-
-.. function:: setAltRowColors(altcolors: bool)
-
-  Sets alternating colors
-
-.. function:: setColumnSorting(enable: bool)
-
-  Eanbles or disables column header sorting
+  Inserts or removes a column at a position.
 
 .. function:: clear()
+  :no-index:
 
-  Clears all content, including the headers
+  Removes everything, headers included.
 
 .. function:: clearContent()
+  :no-index:
 
-  Clears only values in the cells, excluding the headers and row labels
+  Empties the cells but keeps the headers and the grid size.
 
-.. function:: findDataItem(text)
+Headers
+***************
 
-  Searches for particular text in the widget
+.. function:: setColumnHeaders(headers)
+  :no-index:
 
-.. function:: insertColumnAt(column)
+  The labels along the top, from a table of strings.
 
-  Inserts a new column on a specified column index
+.. function:: setRowHeaders(headers)
+  :no-index:
 
-.. function:: insertRowAt(row)
+  The labels down the side.
 
-  Inserts a new row on a specified row index
+.. function:: getColumnHeaderText(column)
+  :no-index:
 
-.. function:: removeColumnAt(column)
+  The label of one column.
 
-  Removes a column at a particular column index
+.. function:: setColumnWidth(column, width)
+  :no-index:
 
-.. function:: removeRowAt(row)
+  How wide a column is, in pixels.
 
-  Removes a row at a particular row index
+Cells
+***************
 
-.. function:: getItemAt(row, column)
+.. function:: setCellText(row, column, text)
+  :no-index:
 
-  Returns a :mod:`TableItem` at a particular row and column
+  Puts text in a cell.
 
-.. function:: getSelectedCells()
+.. function:: getCellItem(row, column)
+  :no-index:
 
-  Returns all selected cells
+  The :doc:`TableItem </widget-items/table-item>` in a cell, which is how you
+  colour an individual cell.
 
-.. function:: getSelectedCell()
+  .. code-block:: lua
 
-  Returns selected cell
+     local cell = sheet:getCellItem(1, 2)
+     cell:setBackgroundColour("#ffe08a")
 
-.. function:: setSpan(row, column, rowSpan, columnSpan)
+.. function:: setCellChild(row, column, child)
+  :no-index:
 
-  Merges cells toegther, allowing them to span multiple rows and columns within the table. Useful for creating cells that cover a large area within the table layout
+  Puts a whole widget in a cell -- a button, a checkbox, a combo box.
+
+  .. code-block:: lua
+
+     sheet:setCellChild(1, 2, ui.CheckBox("Done"))
+
+.. function:: getCellChild(row, column)
+  :no-index:
+
+  The widget in a cell, if one was set.
+
+.. function:: setCellsEditable(editable)
+  :no-index:
+
+  Whether the user may type into cells.
+
+Selection
+***************
+
+.. function:: setCurrentCell(row, column)
+  :no-index:
+
+  Selects a cell.
+
+.. function:: getCurrentRow() / getCurrentColumn()
+  :no-index:
+
+  Where the selection currently is.
+
+.. function:: getCurrentItem()
+  :no-index:
+
+  The selected cell's item.
+
+.. function:: setSelectionBehavior(behavior)
+  :no-index:
+
+  Whether clicking selects a single cell, a whole row, or a whole column.
+
+Appearance
+***************
+
+.. function:: setShowGrid(show) / isShowGrid()
+  :no-index:
+
+  Whether the grid lines are drawn.
+
+.. function:: setAlternatingRowColors(alternate) / isAlternatingRowColors()
+  :no-index:
+
+  Shades every other row, which makes wide tables much easier to read.
+
+.. function:: setSortingEnabled(enabled) / isSortingEnabled()
+  :no-index:
+
+  Lets the user sort by clicking a column header.
+
+Events
+***************
+
+.. function:: setOnCellClick(callback)
+  :no-index:
+
+  Runs when a cell is clicked.
+
+.. function:: setOnCellDoubleClick(callback)
+  :no-index:
+
+  Runs when a cell is double-clicked.
+
+.. function:: setOnCellChange(callback)
+  :no-index:
+
+  Runs when a cell's contents change.
+
+  .. code-block:: lua
+
+     sheet:setOnCellChange(function(sender)
+         print("changed row " .. sender:getCurrentRow())
+     end)

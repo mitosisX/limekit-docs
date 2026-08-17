@@ -1,120 +1,188 @@
 Window
-=========
+###########
 
-This is the fundamental widgets that serves as the main window of any application. It provies a framework for building the main user interface of an application, typically containing menu bars, toolbars, and a layout where other widgets are placed.
+The window is the frame your application lives in. Every app needs one, and it
+is usually the first thing you create.
 
 .. code-block:: lua
 
-  local window = Window{title = 'Limekit', icon = images('app.png'), size={200,200}}
+  local ui = require("limekit.ui")
+
+  local window = ui.Window { title = "My app", size = { 640, 480 } }
   window:show()
 
-.. important::
-  
-  You should first set a layout to hold all of your widgets.
+The options table is the tidiest way to set several things at once. Every key
+is optional -- a bare ``ui.Window()`` gives you a 400x400 window titled
+"Limekit".
 
-Properties
+.. list-table::
+   :header-rows: 1
+   :widths: 20 80
+
+   * - Key
+     - Meaning
+   * - ``title``
+     - The text in the title bar
+   * - ``size``
+     - A ``{width, height}`` pair
+   * - ``location``
+     - An ``{x, y}`` pair placing the window on screen
+   * - ``icon``
+     - The window icon, usually from ``res.Resources.images(...)``
+
+.. important::
+
+  A window shows nothing until you give it a layout and call ``show()``.
+
+  .. code-block:: lua
+
+     local layout = ui.VLayout()
+     layout:addChild(ui.Label("Hello"))
+
+     window:setLayout(layout)
+     window:show()
+
+Contents
+***************
+
+.. function:: setLayout(layout)
+  :no-index:
+
+  Puts a layout in the window. This is how nearly every app fills its window.
+
+.. function:: setMainChild(child)
+  :no-index:
+
+  Puts a single widget in the window instead of a layout. Useful when the whole
+  window is one thing, such as a :doc:`Tab </widgets/tab>` or a
+  :doc:`Scroller </widgets/scroller>`.
+
+.. function:: setMenubar(menubar)
+  :no-index:
+
+  Attaches a :doc:`Menubar </widgets/menu-bar>` along the top.
+
+.. function:: addToolbar(toolbar, position)
+  :no-index:
+
+  Adds a :doc:`Toolbar </widgets/tool-bar>`. ``position`` is ``top``,
+  ``bottom``, ``left`` or ``right`` and defaults to ``top``.
+
+.. function:: addDockable(dock, area)
+  :no-index:
+
+  Adds a :doc:`Dock </widgets/dock>` panel. ``area`` is ``left``, ``right``,
+  ``top`` or ``bottom`` and defaults to ``left``.
+
+Appearance
+***************
+
+.. function:: setTitle(text) / getTitle()
+  :no-index:
+
+  The text in the title bar.
+
+.. function:: setIcon(path) / getIcon()
+  :no-index:
+
+  The window icon.
+
+  .. code-block:: lua
+
+     local res = require("limekit.res")
+     window:setIcon(res.Resources.images("app.png"))
+
+.. function:: setCustomCursor(cursor)
+  :no-index:
+
+  The mouse cursor shown over the window. Accepts names like ``arrow``,
+  ``wait``, ``ibeam``, ``cross``, ``pointinghand``, ``openhand``, ``forbidden``.
+
+Position and size
+*******************
+
+.. function:: getSize()
+  :no-index:
+
+  The current ``{width, height}`` of the window.
+
+.. function:: center()
+  :no-index:
+
+  Moves the window to the middle of the screen.
+
+  .. note::
+
+     Limekit centres a window automatically the first time it is shown. If the
+     user then moves it, re-showing the window leaves it where they put it.
+
+.. function:: maximize()
+  :no-index:
+
+  Fills the screen.
+
+.. function:: minimize()
+  :no-index:
+
+  Sends the window to the taskbar.
+
+.. function:: setAlwaysOnTop(ontop)
+  :no-index:
+
+  Keeps the window above other windows.
+
+Events
 ***************
 
 .. function:: setOnShown(callback)
-  
-  Executed whenever the window is shown or displayed on the screen.
+  :no-index:
+
+  Runs when the window is first shown.
 
 .. function:: setOnClose(callback)
-  
-  Executed when the window is closing.
-  
+  :no-index:
+
+  Runs when the user closes the window.
+
 .. function:: setOnResize(callback)
-  
-  Executed whenever the window is being resized.
+  :no-index:
 
-.. function:: maximize()
+  Runs when the window is resized. The handler receives the window, the new
+  width and the new height.
 
-  Used to enlarge a window to fill the entire screen. It allows the window to occupy the maximum available space on the screen
+  .. code-block:: lua
 
-.. function:: minimize()
-  
-  Minimizes or iconifies a window to the system taskbar or dock. It shrinks the window and places an icon representing the window in the taskbar or dock, allowing users to easily restore the window later
+     window:setOnResize(function(sender, width, height)
+         print(width .. "x" .. height)
+     end)
 
-.. function:: setMinSize(width, height)
+.. function:: setOnMouseMove(callback)
+  :no-index:
 
-  Sets the minimum size
+  Runs as the pointer moves over the window. Receives the window, ``x`` and ``y``.
 
-.. function:: setMaxHeight(height)
+.. function:: setOnMousePress(callback)
+  :no-index:
 
-  Sets the maximum height
+  Runs when a mouse button goes down. Receives the window, ``x`` and ``y``.
 
-.. function:: setMinHeight(height)
+.. function:: setOnMouseRelease(callback)
+  :no-index:
 
-  Sets the minimum height
+  Runs when a mouse button comes back up. Receives the window, ``x`` and ``y``.
 
-.. function:: setMaxWidth(width)
+.. function:: setOnMouseDoubleClick(callback)
+  :no-index:
 
-  Sets the maximum width
+  Runs on a double click. Receives the window, ``x`` and ``y``.
 
-.. function:: setMinWidth(width)
+.. function:: setOnContextMenu(callback)
+  :no-index:
 
-  Sets the minimum width
+  Runs on a right click. Receives the window, ``x`` and ``y``.
 
-.. function:: setMaxSize(width, height)
+  .. code-block:: lua
 
-  Sets the maximum size
-
-.. function:: setCustomCursor(path)
-
-  Sets a custom cursor icon from path for the window
-
-.. function:: setTitle(title)
-
-  Sets the title for the window
-
-.. function:: setMainWidget(widget)
-
-  Sets any widget as the central widget, causing it to take up the available space.
-
-.. function:: setSize(width, height)
-
-  Sets the size of the window
-
-.. function:: setLayout(layout)
-
-  Sets a primary layout for the window
-
-.. function:: addDock(dock, area: optional)
-
-  Adds a dock to the window.
-
-  Areas available: ``left``, ``right``, ``top``, ``bottom``, ``allareas`` and ``nodock``
-
-checkout :doc:`Docks </widgets/dock>`
-
-.. function:: setIcon(path)
-
-  Sets the icon for the window
-
-.. function:: addToolbar(toolbar)
-
-  Adds a toolbar to the window
-  
-checkout :doc:`Tool bars </widgets/tool-bar>`
-
-.. function:: setMenubar(menubar)
-
-  Sets a menubar for the window
-
-checkout :doc:`Menu bars </widgets/menu-bar>`
-
-.. note::
-
-  There can only be one menubar per window
-
-.. function:: center()
-
-  Centers the window
-
-.. function:: setFixedSize(width, height)
-
-  Sets a fixed size to restrict resizing the window
-
-.. function:: show()
-
-  Shows the window
+     window:setOnContextMenu(function(sender, x, y)
+         print("right clicked at " .. x .. ", " .. y)
+     end)

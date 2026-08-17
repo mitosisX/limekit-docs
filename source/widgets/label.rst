@@ -1,48 +1,80 @@
 Label
-=========
+###########
 
-A widget primarily used for showing text in a user interface. These widgets are often used to provide descriptions, titles, or informative messages within an application. They help in presenting static content that users can read or refer to as part of the interface design.
+Displays text or an image. Labels are not interactive -- they are how your app
+talks to the person using it.
 
 .. code-block:: lua
 
-  local label = Label(text)
+  local ui = require("limekit.ui")
+
+  local label = ui.Label("Total: 0")
+
+.. note::
+
+  ``setText`` accepts numbers as well as strings, so there is no need to call
+  ``tostring()`` first:
+
+  .. code-block:: lua
+
+     label:setText(42)
 
 Properties
 ***************
 
-.. function:: setOnClick(callback)
+.. function:: setText(text) / getText()
+  :no-index:
 
-  Executed when the widget is clicked.
+  The text shown.
 
-.. function:: setText(text)
-  :noindex:
+.. function:: setTextAlignment(alignment)
+  :no-index:
 
-  Sets text on the label
+  Where the text sits within the label. One of ``left``, ``right``, ``center``,
+  ``top``, ``bottom``, ``hcenter``, ``vcenter``, ``justify``, ``baseline``,
+  ``leading`` or ``trailing``.
 
-.. function:: getText()
-  :noindex:
+  .. code-block:: lua
 
-  Returns the text displayed on the widget
-  
-.. function:: setTextAlign(align)
+     label:setTextAlignment("center")
 
-  Set how the text is aligned. Available options include ``left``, ``right``, ``bottom``, ``top``, ``center``, ``hcenter`` and ``vcenter``
+.. function:: setWordWrap(wrap) / isWordWrap()
+  :no-index:
 
-.. function:: setWordWrap(enable: bool)
+  Whether long text wraps onto more lines instead of running off the edge.
 
-  Enable or disable word wrap
+.. function:: setImage(path)
+  :no-index:
 
-.. function:: setBold(enable: bool)
+  Shows an image instead of text.
 
-  Enable or disable bold text
+  .. code-block:: lua
 
-.. function:: setTextSize(size)
+     local res = require("limekit.res")
+     label:setImage(res.Resources.images("logo.png"))
 
-  Sets text size
+.. function:: getImagePath()
+  :no-index:
 
-.. function:: setCompanion(widget)
+  The path of the image currently shown.
 
-  When the user hits the specific shortcut key shown on the label, the keyboard focus moves to the widget linked with that label.
+.. function:: setCursor(cursor)
+  :no-index:
 
-  The companion system works exclusively for ``Labels`` that have text where a single character has an ``'&'`` symbol before it. This '&' character is assigned as the shortcut key.
+  The mouse cursor shown over the label. One of ``arrow``, ``uparrow``,
+  ``wait``, ``busy``, ``cross``, ``ibeam``, ``sizever``, ``sizehor``,
+  ``sizeall``, ``blank``, ``splitv``, ``splith``, ``pointinghand``,
+  ``forbidden``, ``whatsthis``, ``openhand``, ``closedhand``, ``dragcopy``,
+  ``dragmove``, ``draglink``.
 
+Styling
+***************
+
+Labels take stylesheets like any other widget, which is the usual way to change
+their size and colour:
+
+.. code-block:: lua
+
+  local heading = ui.Label("Welcome")
+  heading:setTextAlignment("center")
+  heading:setStyleSheet("font-size: 28px; font-weight: bold; color: #333;")

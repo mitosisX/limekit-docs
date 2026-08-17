@@ -1,57 +1,57 @@
 GroupBox
-===========
+###########
 
-A container that groups and organizes related widgets together. It provides a visual frame or box around the grouped widgets, along with an optional title, making it easier for users to understand the relationship between these widgets. It helps in structuring and presenting parts of a user interface, keeping elements organized and visually connected within an application
+A titled frame around a set of related widgets. It makes a form easier to scan
+and, when the widgets inside are :doc:`radio buttons </widgets/radio-button>`,
+it also makes them a single set of choices.
 
 .. code-block:: lua
+  :linenos:
 
-  local group = GroupBox(title: optional)
+  local ui = require("limekit.ui")
 
-.. important::
+  local box = ui.GroupBox("Paper size")
 
-  You can only set a layout to the widget and not add widgets directly
+  local inner = ui.VLayout()
+  inner:addChild(ui.RadioButton("A4"))
+  inner:addChild(ui.RadioButton("Letter"))
+  inner:addChild(ui.RadioButton("Legal"))
 
-.. note::
+  box:setLayout(inner)
 
-  using ``setChecked(false)`` disables all the widgets in the widget. However, this only applies once ``setCheckable(true)`` has been used.
-
+.. image:: groupbox.png
 
 Properties
 ***************
 
-.. function:: setLayout(layout)
-  :noindex:
+.. function:: setTitle(text) / getTitle()
+  :no-index:
 
-  Set a primary layout for the widget
+  The heading on the frame.
 
-.. function:: setBackgroundColor(color)
+.. function:: setLayout(layout) / getLayout()
+  :no-index:
 
-  Sets background color for the widget
+  The layout held inside.
 
-.. function:: setTitle(title)
+.. function:: setCheckable(checkable) / isCheckable()
+  :no-index:
 
-  Sets the title for the widget
+  Puts a checkbox in the title. Unticking it disables everything inside, which
+  is a tidy way to switch off a whole section of a form.
 
-.. function:: setToolTip(text)
+  .. code-block:: lua
 
-  Tooltips are brief informational messages that appear when the user hovers the mouse pointer over the tab
+     local advanced = ui.GroupBox("Advanced options")
+     advanced:setCheckable(true)
+     advanced:setChecked(false)
 
-.. function:: setToolTipDuration(duration)
+.. function:: setChecked(checked) / isChecked()
+  :no-index:
 
-  Set how long the tooltip displays
+  The state of that checkbox.
 
-.. function:: getTooltip()
+.. function:: setFlat(flat) / isFlat()
+  :no-index:
 
-  Returns the tooltip text
-
-.. function:: getCheck()
-
-  Returns check status; ``true`` or ``false``
-
-.. function:: setCheck(check: bool)
-
-  Sets the box to be checked or not
-
-.. function:: getTitle()
-
-  Gets the title for the widget
+  Draws the title with only a line beneath it instead of a full frame.

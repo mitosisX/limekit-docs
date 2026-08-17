@@ -1,32 +1,66 @@
-============
 GridLayout
-============
+#############
 
-This layout is like a grid or table where you can neatly arrange widgets in rows and columns. It's a layout manager that helps you organize various elements within a window or interface. You can specify where each widget should go in the grid, and the layout ensures they are positioned accordingly. It's great for creating structured interfaces where widgets need to be aligned in rows and columns, similar to organizing information in a table.
+Arranges widgets in rows and columns. Calculators, keypads and dense forms are
+the natural fit.
 
 .. code-block:: lua
+  :linenos:
 
-  local layout = GridLayout()
+  local ui = require("limekit.ui")
+
+  local grid = ui.GridLayout()
+  grid:addChild(ui.Button("7"), 1, 1)
+  grid:addChild(ui.Button("8"), 1, 2)
+  grid:addChild(ui.Button("9"), 1, 3)
+  grid:addChild(ui.Button("4"), 2, 1)
+  grid:addChild(ui.Button("5"), 2, 2)
+  grid:addChild(ui.Button("6"), 2, 3)
+
+.. important::
+
+  **Rows and columns start at 1.** The top-left cell is ``(1, 1)``.
 
 Properties
 ***************
 
-.. function:: addChild(widget, row, column, rowSpan: optional, columnSpan: optional)
-  
-  Adds a widget to the layout on a specified row (``x position``) and column (``y position``). The ``rowSpan`` and ``columnSpan`` are optional but allow a widget to span multiple rows or columns.
+.. function:: addChild(child, row, column, rowSpan, columnSpan)
+  :no-index:
 
-.. function:: addLayout(layout, row, column, rowSpan: optional, columnSpan: optional)
+  Places a widget in a cell. ``rowSpan`` and ``columnSpan`` let it cover several
+  cells and both default to 1.
 
-  Similar to the above property, now only for layouts.
+  .. code-block:: lua
+
+     -- a wide button across the bottom three columns
+     grid:addChild(ui.Button("="), 3, 1, 1, 3)
+
+.. function:: addLayout(layout, row, column, rowSpan, columnSpan)
+  :no-index:
+
+  Places a nested layout in a cell.
 
 .. function:: getChildAt(row, column)
+  :no-index:
 
-  Retrieves a widget at a specified row and column
+  The widget in a cell.
+
+.. function:: setRowStretch(row, stretch)
+  :no-index:
+
+  How much of the spare height a row takes compared with the others.
 
 .. function:: setColumnStretch(column, stretch)
+  :no-index:
 
-  This method allows you to control how the columns of the layout expand or contract when the parent widget is resized.
+  How much of the spare width a column takes.
 
-.. function:: setMargins(left, top,right,bottom)
+  .. code-block:: lua
 
-  Sets the margins of the layout
+     -- second column grows, first stays as small as it can
+     grid:setColumnStretch(1, 0)
+     grid:setColumnStretch(2, 1)
+
+.. seealso::
+
+  :doc:`Layout Managers </layouts>` for the methods every layout shares.

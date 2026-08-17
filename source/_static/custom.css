@@ -1,0 +1,91 @@
+/* Limekit docs -- overrides for sphinx_rtd_theme.
+ *
+ * The theme caps content at 800px (`.wy-nav-content { max-width: 800px }`),
+ * so on any wide screen the page is a narrow column with the rest of the
+ * window left empty. Raising the cap only widens the column -- the leftover
+ * is still dead space -- so remove it entirely and let the content fill the
+ * area beside the sidebar.
+ */
+
+.wy-nav-content {
+    max-width: none;
+}
+
+/* Filling the width is right for code, tables and diagrams, but a 200-character
+ * line of prose is hard to read. Cap the measure on running text only, so
+ * paragraphs stay comfortable while everything else uses the room.
+ *
+ * To go fully edge-to-edge, delete this block. To go back to a narrow
+ * centred page, delete both blocks and the theme default returns.
+ */
+.rst-content > p,
+.rst-content > ul,
+.rst-content > ol,
+.rst-content > dl > dd > p,
+.rst-content .section > p,
+.rst-content .section > ul,
+.rst-content .section > ol {
+    max-width: 95ch;
+}
+
+/* Code blocks are the main thing readers scan for. Give them a little more
+ * contrast against the page and room to breathe.
+ */
+.rst-content div[class^="highlight"] {
+    border: 1px solid #e1e4e5;
+    border-radius: 3px;
+}
+
+.rst-content div[class^="highlight"] pre {
+    padding: 12px 14px;
+    line-height: 1.5;
+}
+
+/* Inline literals -- method names, option strings -- appear constantly in
+ * these docs. Tone down the theme's red-on-white so a paragraph full of them
+ * is not visually shouty.
+ */
+.rst-content code.literal {
+    color: #56606b;
+    background: #f4f6f7;
+    border: 1px solid #e1e4e5;
+    padding: 1px 5px;
+    font-size: 88%;
+}
+
+/* Keep links inside literals looking like links. */
+.rst-content a code.literal {
+    color: #2980b9;
+}
+
+/* The `.. function::` blocks are the backbone of the reference pages. Make the
+ * signature line easier to pick out when scanning a long page.
+ */
+.rst-content dl.function > dt,
+.rst-content dl.py > dt {
+    background: #f4f6f7;
+    border-top: 2px solid #6ab0de;
+    color: #2c3e50;
+    font-size: 100%;
+}
+
+/* Tables (the migration map, the module list) should use the width available
+ * rather than wrapping every cell.
+ */
+.rst-content table.docutils {
+    width: 100%;
+    table-layout: auto;
+}
+
+.rst-content table.docutils td,
+.rst-content table.docutils th {
+    white-space: normal;
+    vertical-align: top;
+}
+
+/* Wide code samples scroll inside their own box instead of stretching the
+ * page sideways.
+ */
+.rst-content div[class^="highlight"] > pre {
+    overflow-x: auto;
+}

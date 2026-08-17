@@ -1,81 +1,88 @@
 ListBox
-===========
+###########
 
-A widget used to display a list of items. It allows users to view a collection of items arranged in a list format within an application. Each item in the list can contain text and/or icons. This widget provides functionalities to add, remove, select, and manipulate items in the list, making it a versatile tool for presenting and managing lists of information or options in an interface.
+A scrollable list of items, all visible at once. Where a
+:doc:`ComboBox </widgets/combo-box>` hides its options until clicked, a ListBox
+shows them.
 
 .. code-block:: lua
 
-  local list = ListBox(data: optional)
+  local ui = require("limekit.ui")
 
-Properties
+  local tasks = ui.ListBox({ "Write docs", "Fix bug", "Ship release" })
+
+Items
+***************
+
+.. function:: setItems(items)
+  :no-index:
+
+  Replaces the list with a table of strings.
+
+.. function:: addImageItem(label, image)
+  :no-index:
+
+  Adds an item with an icon beside its text.
+
+  .. code-block:: lua
+
+     local res = require("limekit.res")
+     tasks:addImageItem("Deploy", res.Resources.images("rocket.png"))
+
+.. function:: insertItemAt(row, item)
+  :no-index:
+
+  Inserts an item at a position, pushing the rest down. **Rows start at 1.**
+
+.. function:: removeItemAt(row)
+  :no-index:
+
+  Removes the item at a position.
+
+.. function:: getItemAt(index)
+  :no-index:
+
+  The item at a position.
+
+.. function:: getItemsCount()
+  :no-index:
+
+  How many items the list holds.
+
+.. function:: clear()
+  :no-index:
+
+  Removes every item.
+
+Selection
+***************
+
+.. function:: setCurrentRow(row) / getCurrentRow()
+  :no-index:
+
+  The selected row. **Rows start at 1.**
+
+  .. code-block:: lua
+
+     tasks:setCurrentRow(1)
+     print(tasks:getItemAt(tasks:getCurrentRow()))
+
+Events
 ***************
 
 .. function:: setOnItemSelect(callback)
+  :no-index:
 
-  The function when an item is selected
-  
-  :params: ``self``, ``text`` and ``index``
+  Runs when the selected item changes.
 
-.. function:: setItemViewMode(callback)
+.. function:: setOnItemDoubleClick(callback)
+  :no-index:
 
-  Sets how items are displayed in the widget: Available options: ``icons`` and ``list``
+  Runs when an item is double-clicked -- the usual way to "open" something in a
+  list.
 
-.. function:: setItems(data: table)
+  .. code-block:: lua
 
-  Sets data to the widget. Use the following format: ``{'item 1', 'item 2', 'item 3', ...}``
-
-.. function:: addImageItem(data: table)
-  
-  Add an item with an icon alongside it. Use the following format: ``{'limekit', images('lua.png')}``
-
-.. function:: addImageItems(data: table)
-
-  Same as above method, only acceptng build data. Use the following format: ``{{'limekit', images('lua.png')}, {'apple', images('icon.png')}, ...}``
-
-.. function:: addItem(text)
-
-  Adds a single item to the widget
-
-.. function:: removeItem(row)
-
-  Adds a single item to the widget
-
-.. function:: getCurrentRow(text)
-
-  Returns row of selected item
-  
-.. function:: getText()
-
-  Returns selected item's text
-
-.. function:: getinsertItemAtText(row, text)
-
-  Inserts an item at a specified row
-
-.. function:: setAltRowColors()
-
-  Sets alternating colors to the rows
-
-.. function:: setIconSizes(width, height)
-
-  Sets icons to a specified sizes
-
-.. function:: getTextAt(row)
-
-  Gets text at a specified row
-
-.. function:: getItemsCount()
-  
-  Returns total items available
-  
-.. function:: clear()
-
-  Removes all item in the list
-
-.. function:: setAllowDragDrop(enable: bool)
-
-  Enables or disables dragging and dropping of items
-
-.. function:: setDragEnabled(enable: bool)
-
-  Enables or disables drag
+     tasks:setOnItemDoubleClick(function(sender)
+         openTask(sender:getCurrentRow())
+     end)

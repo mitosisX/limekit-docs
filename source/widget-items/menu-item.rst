@@ -1,67 +1,103 @@
 MenuItem
-===========
+###########
 
-A powerful component designed to manage and display multiple tabs, each hosting distinct set of widgets or layouts but only one item can stay open at a time
-
-.. code-block:: lua
-
-  local accordion = Accordion()
-
-You can add a widget or a layout to the accordion using ``addChild(widget, label, icon: optional)`` or ``addLayout(layout, label, icon: optional)``, respectively. Take a look at the different code snippet below
-
-*Adding a widget*
+A single command in a :doc:`Menu </widgets/menu>`.
 
 .. code-block:: lua
+  :linenos:
 
-  local button = Button('Click me')
-  accordion:addChild(button, 'All Buttons')
+  local ui = require("limekit.ui")
 
-  -- or otherwise with an icon
+  local save = ui.MenuItem("Save")
+  save:setShortcut("Ctrl+S")
+  save:setOnClick(function()
+      saveDocument()
+  end)
 
-  local button = Button('Click me')
-  accordion:addChild(button, 'All Buttons', images('icon.png'))
-
-*Adding a layout*
-
-.. code-block:: lua
-
-  local layout = VLayout()
-  local button = Button('Click me')
-
-  layout:addChild(button)
-  accordion:addChild(layout, 'All Buttons')
-
-  -- or otherwise with an icon
-
-  local layout = VLayout()
-  local button = Button('Click me')
-
-  layout:addChild(button)
-  accordion:addChild(layout, 'All Buttons')
-
-*checkout* :doc:`Layout Managers </layouts>`
+  fileMenu:addMenuItem(save)
 
 Properties
 ***************
 
-.. function:: addChild(widget, label, icon: optional)
-  
-  Adds a widget in a tab to the accordion with given a label, and icon if necessary
+.. function:: setText(text) / getText()
+  :no-index:
 
-.. function:: addLayout(layout, label, icon: optional)
-  
-  Adds a layout in a tab to the accordion with given a label, and icon if necessary
+  The command's label.
 
-checkout :doc:`Using resources </user-resources>`
+.. function:: setIcon(path) / getIcon()
+  :no-index:
 
-.. function:: setToolTip(text)
+  An icon beside the label.
 
-  Enable text that appears when a mouse hovers on the tab
+.. function:: setShortcut(sequence) / getShortcut()
+  :no-index:
 
-.. function:: getCurrentIndex()
+  A keyboard shortcut, written the usual way: ``"Ctrl+S"``, ``"Ctrl+Shift+N"``,
+  ``"F5"``. The shortcut is shown next to the command in the menu.
 
-  Gets the current index of the visible tab
+.. function:: setEnabled(enabled) / isEnabled()
+  :no-index:
 
-.. function:: setCurrentIndex(index)
+  Whether the command can be chosen. Grey out what does not currently apply
+  rather than removing it -- people learn where things are.
 
-  Sets the index of the tab to be visible
+.. function:: setVisible(visible) / isVisible()
+  :no-index:
+
+  Whether the command appears at all.
+
+.. function:: setToolTip(text) / getToolTip()
+  :no-index:
+
+  The tooltip shown on hover.
+
+.. function:: setStatusTip(text) / getStatusTip()
+  :no-index:
+
+  Text shown in the :doc:`StatusBar </widgets/status-bar>` while the command is
+  highlighted.
+
+.. function:: setSeparator(separator) / isSeparator()
+  :no-index:
+
+  Turns the item into a dividing line.
+
+Checkable commands
+*********************
+
+.. function:: setCheckable(checkable) / isCheckable()
+  :no-index:
+
+  Gives the command a tick, for options that are on or off.
+
+.. function:: setChecked(checked) / isChecked()
+  :no-index:
+
+  The tick state.
+
+  .. code-block:: lua
+
+     local wrap = ui.MenuItem("Word wrap")
+     wrap:setCheckable(true)
+     wrap:setChecked(true)
+     wrap:setOnClick(function(sender)
+         editor:setWordWrap(sender:isChecked())
+     end)
+
+.. function:: toggle()
+  :no-index:
+
+  Flips the tick.
+
+Events
+***************
+
+.. function:: setOnClick(callback)
+  :no-index:
+
+  Runs when the command is chosen.
+
+.. function:: trigger()
+  :no-index:
+
+  Runs the command from code, as though the user had chosen it.

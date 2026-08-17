@@ -1,66 +1,59 @@
-===========
 VLayout
-===========
+##########
 
-A layout that helps organize widgets in a vertical arrangement within a window or interface. It stacks elements on top of each other from top to bottom, making it easy to place widgets vertically one after another. This layout ensures that when you add widgets, they align vertically and adjust their positions automatically if the window is resized. It's useful for creating interfaces where elements are stacked vertically, like a list of items or a column of buttons.
+Arranges widgets in a column, top to bottom. This is the layout most apps start
+with.
 
 .. code-block:: lua
+  :linenos:
 
-  local layout = VLayout()
+  local ui = require("limekit.ui")
+
+  local page = ui.VLayout()
+  page:setSpacing(10)
+  page:setMargins(20, 20, 20, 20)
+  page:addChild(ui.Label("What's your name?"))
+  page:addChild(ui.LineEdit())
+  page:addChild(ui.Button("Continue"))
 
 Properties
 ***************
 
-.. function:: addChild(widget, stretch: optional)
+.. function:: addChild(child, stretch)
+  :no-index:
 
-  The **optional** stretch parameter in the ``addChild`` method determines how much space a widget occupies relative to other widgets in the layout.
-
-  For instance, if you add three widgets to a vertical layout and set the stretch factor to 0 for the first widget, 1 for the second widget, and 2 for the third widget, the third widget will take up more vertical space compared to the first and second widgets. The space distribution is proportional to the stretch factors assigned to each widget.
+  Adds a widget. ``stretch`` decides how much of any spare height this widget
+  takes compared with the others; it defaults to 0.
 
   .. code-block:: lua
-    
-    local layout = VLayout()
 
-    local button1 = Button("Button 1")
-    local button2 = Button("Button 2")
-    local button3 = Button("Button 3")
+     local page = ui.VLayout()
+     page:addChild(ui.Label("Notes"))
+     page:addChild(ui.TextField(), 1)   -- grows to fill the window
 
-    layout:addChild(button1)     -- default stretch factor is 0 anyway
-    layout:addChild(button2, 1)  -- stretch factor 1
-    layout:addChild(button3, 2)  -- stretch factor 2
+.. function:: addLayout(layout, stretch)
+  :no-index:
 
-.. note::
-
-  You don't have to specify a stretch value unless needed. By default, it's always set to ``0``. Feel free to omit it if you don't require a specific stretch for your layout.
-
-.. function:: setContentAlignment(alignment)
-  
-  This property allows you to specify the alignment of the widgets within a layout. This method sets the alignment of the entire layout's content within its allocated space. Available alignment flags: ``leading``, ``left``, ``tight``, ``trailing``, ``hcenter``, ``justify``, ``absolute``, ``horizontal_mask``, ``top``, ``bottom``, ``vcenter``, ``center``, ``baseline`` and ``vertical_mask``
-
-.. function:: addLayout(layout)
-
-  This allows you to add an entire layout as a single element within another layout. This is helpful when you want to nest layouts to create more complex UI structures.
+  Adds a nested layout as one item in the column -- typically an
+  :doc:`HLayout </layouts/hlayout>` of buttons at the bottom.
 
 .. function:: addStretch(stretch)
-  
-  This property is used to add stretchable space within a layout. This stretchable space pushes the widgets towards the beginning or end of the layout, depending on where the stretch is added.
+  :no-index:
 
-  For instance, if you have a horizontal layout and you add addStretch before and after adding widgets, it will push the widgets to the center, creating space before and after them that expands or contracts based on the available space.
+  Adds a springy gap that soaks up leftover height, pushing what follows to the
+  bottom.
 
   .. code-block:: lua
 
-    local layout = HLayout()
+     page:addStretch(1)
+     page:addLayout(buttonRow)          -- pinned to the bottom
 
-    local button1 = Button("Button 1")
-    local button2 = Button("Button 2")
-    local button3 = Button("Button 3")
+.. function:: addSpacing(size)
+  :no-index:
 
-    layout:addStretch(1)  -- Adds stretchable space before buttons
-    layout:addChild(button1)
-    layout:addChild(button2)
-    layout:addChild(button3)
-    layout:addStretch(1)  -- Adds stretchable space after buttons
+  Adds a fixed gap of a given number of pixels.
 
-.. function:: setMargins(left, top,right,bottom)
+.. seealso::
 
-  Sets the margins of the layout
+  :doc:`HLayout </layouts/hlayout>` for a row, and
+  :doc:`Layout Managers </layouts>` for the methods every layout shares.

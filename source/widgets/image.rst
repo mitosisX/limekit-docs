@@ -1,27 +1,56 @@
 Image
-=========
+###########
 
-This widget allows developers to load and display images from files or resources, enabling users to view visual content as part of the application's design or functionality.
+Displays a picture, and can respond to being clicked.
 
 .. code-block:: lua
 
-  local image = Image(path)
+  local ui  = require("limekit.ui")
+  local res = require("limekit.res")
+
+  local logo = ui.Image(res.Resources.images("logo.png"))
 
 Properties
 ***************
 
-.. function:: setOnClick(callback)
-
-  Executed when the image is clicked.
-  
 .. function:: setImage(path)
+  :no-index:
 
-  Sets the current image
+  The picture to show.
 
-.. function:: setImageAlign(align)
+.. function:: getImagePath()
+  :no-index:
 
-  Set how the image is aligned. Available options include ``left``, ``right``, ``bottom``, ``top``, ``center``, ``hcenter`` and ``vcenter``
+  The path of the picture currently shown.
 
-.. function:: resizeImage(width, height)
+.. function:: setImageSize(width, height)
+  :no-index:
 
-  Resizes the images to the specified dimensions
+  Scales the picture.
+
+  .. important::
+
+     Call ``setImage`` first. Resizing an Image that has no picture yet raises
+     an error explaining exactly that -- in 1.x it produced a confusing crash.
+
+  .. note::
+
+     1.x also had a ``resizeImage`` method. It was an identical copy of
+     ``setImageSize`` and has been removed.
+
+.. function:: setImageAlignment(alignment)
+  :no-index:
+
+  Where the picture sits within the widget. Takes the same names as
+  :doc:`Label </widgets/label>` -- ``center``, ``left``, ``top`` and so on.
+
+.. function:: setOnClick(callback)
+  :no-index:
+
+  Runs when the picture is clicked, which turns an image into a button.
+
+  .. code-block:: lua
+
+     logo:setOnClick(function()
+         openWebsite()
+     end)

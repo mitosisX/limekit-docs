@@ -1,45 +1,68 @@
 GifPlayer
-===========
+############
 
-A widget that allows you to view and play GIF (Graphics Interchange Format) files. It displays the animated or sequence of images contained within a GIF file, enabling you to watch the animation, which could be anything from a short loop to a longer sequence of frames. Typically, a GIF player provides controls to start, pause, stop, or navigate through the frames of the GIF, giving users control over the playback of the animation.
+Plays an animated GIF. Useful for loading indicators and small animations.
 
 .. code-block:: lua
 
-  local gif = GifPlayer(path)
+  local ui  = require("limekit.ui")
+  local res = require("limekit.res")
 
-*- GIF's play automatically.*
+  local spinner = ui.GifPlayer(res.Resources.images("loading.gif"))
+  spinner:start()
 
-.. note::
-
-  There's an issue with how GIFs are displayed in the Qt framework we're using. The output always ends up pixelated and in poor quality. Until the Qt developer addresses this problem, there's nothing we can do from our end.
-
-Properties
+Playback
 ***************
 
-.. function:: start()
+.. function:: ui.GifPlayer(filename)
+  :no-index:
 
-  Starts playing the GIF
+  Creates a player for a GIF file.
+
+.. function:: start()
+  :no-index:
+
+  Begins playing.
 
 .. function:: stop()
-  
-  Stops playing the GIF
+  :no-index:
+
+  Stops playing and returns to the first frame.
 
 .. function:: pause()
-  
-  Pause the GIF animation loop
+  :no-index:
+
+  Freezes on the current frame.
 
 .. function:: nextFrame()
-  
-  Jumps to the next frame
-  
-.. function:: getCurrentFrame()
-  
-  Gets the current frame
+  :no-index:
 
-.. function:: justToFrame()
-  
-  Navigates to a specified frame
+  Steps forward one frame.
+
+.. function:: jumpToFrame(frame)
+  :no-index:
+
+  Jumps to a particular frame.
+
+.. function:: setSpeed(speed) / getSpeed()
+  :no-index:
+
+  Playback speed as a percentage. ``100`` is normal, ``200`` is twice as fast.
+
+Information
+***************
+
+.. function:: getCurrentFrame()
+  :no-index:
+
+  Which frame is showing.
+
+.. function:: getFramesCount()
+  :no-index:
+
+  How many frames the animation has.
 
 .. function:: getState()
-  
-  Get state of the animation: running, ``notrunning``, ``paused`` and ``running``
+  :no-index:
+
+  Whether the animation is running, paused or stopped.

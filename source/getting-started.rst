@@ -12,26 +12,27 @@ Installation
 What's Limekit?
 =================
 
-*Limekit* is framework for building desktop applications using the `lua <https://www.lua.org/>`_ language without the need for HTML and CSS. On the other hand allowing developers to maintain one lua codebase and create cross-platform apps that work on ``Windows``, ``macOS``, and ``Linux``.
+*Limekit* is a framework for building desktop applications using the `lua <https://www.lua.org/>`_ language without the need for HTML and CSS, allowing developers to maintain one lua codebase and create cross-platform apps that work on ``Windows``, ``macOS``, and ``Linux``.
 
-~ It is being developed by company called :mod:`Take bytes`, with :mod:`Omega Msiska` as the lead developer on this project.
+~ It is being developed by a company called :mod:`Take bytes`, with :mod:`Omega Msiska` as the lead developer on this project.
 
 Key Features:
 
 - **Modern UI**: Limekit allows developers to craft beautiful UI's with dark and light modes available.
-- **Simplicity**: One of the notable features of Limekit is it's ability to create a working program in under 2 lines of code as shown below.
+- **Simplicity**: One of the notable features of Limekit is its ability to create a working program in three lines of code.
 
     .. code-block:: lua
         :linenos:
 
-        local window = Window{title='Limekit app', icon=images('app.png')}
+        local ui = require("limekit.ui")
+        local window = ui.Window { title = "Limekit app" }
         window:show()
 
     - This is basically enough for Limekit to run your program. Mind blowing right? 😊
 
 Guess what?
 ------------
-    
+
 - **No C, C++ or python knowledge**: You don't need to know any python, C or C++ to develop programs in :mod:`Limekit`, just lua
 - **Cross-platform**: Run the same code base in Windows, Linux and macOS
 - **Free**: The framework is free to use
@@ -39,7 +40,7 @@ Guess what?
 Installing Python
 ======================
 
-The Limekit framework is built in Python 3.10, so :command:`you'll need to have Python 3.10 installed` to use the framework. Follow the tutorial to get Python 3.10 installed on your OS.
+The Limekit framework is built in Python, so :command:`you'll need Python 3.10 or newer` to use it. Follow the tutorial to get Python installed on your OS.
 
 .. note::
     This guide is for those who haven't delved into Python before and are installing it for the very first time.
@@ -47,17 +48,17 @@ The Limekit framework is built in Python 3.10, so :command:`you'll need to have 
 Windows
 ----------
 
-- Installing python on Windows is pretty straight forward. Simply visit `python's website <https://www.python.org/downloads/release/python-31011/>`_ to download for your system
+- Installing python on Windows is pretty straight forward. Simply visit `python's website <https://www.python.org/downloads/>`_ to download for your system
 
-Once the installation is complete, open your terminal (Comamnd Prompt or PowerShell) and type the following command::
+Once the installation is complete, open your terminal (Command Prompt or PowerShell) and type the following command::
 
     $ python
 
 If you get a similar output as the one below, you are good to go! 😊
 
 .. code-block::
-    
-    Python 3.10.6 (tags/v3.10.6:9c7b4bd, Aug  1 2022, 21:53:49) [MSC v.1932 64 bit (AMD64)] on win32
+
+    Python 3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)] on win32
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
 
@@ -71,17 +72,17 @@ Linux
     The framework has only been tested on Ubuntu, but it's expected to function on other Linux distros as well.
 
 .. important::
-    
-    Before trying to install python3.10, try executing ``python3.10`` or ``python3 --version`` in the terminal to see if python is already installed, as most Linux distributions come with python installed
 
-Head over to `this website <https://www.linuxcapable.com/how-to-install-python-3-10-on-ubuntu-linux/>`_ to learn how to install python3.10 on your Linux
+    Before trying to install python, try executing ``python3 --version`` in the terminal to see if python is already installed, as most Linux distributions come with python installed
+
+Most current distributions ship a suitable Python. If yours does not, your package manager will have one -- on Ubuntu, ``sudo apt install python3 python3-pip``.
 
 Done installing. What's next?
 ===============================
 
 .. important::
 
-    Read the below instructions before downlaoding anything
+    Read the below instructions before downloading anything
 
     All required files should be downloaded from the :mod:`Releases` page (right hand side) in the github links provided
 
@@ -89,7 +90,7 @@ Done installing. What's next?
 
 Head over to `our github repo <https://github.com/mitosisX/Limer-Limekit/>`_ to download :mod:`Limer`.
 
-There are :mod:`over 30 examples` prepared for your journey in Limekit, just click `here <https://github.com/mitosisX/limekit-ui-examples/>`_ to downlaod them
+There are :mod:`plenty of examples` prepared for your journey in Limekit, just click `here <https://github.com/mitosisX/limekit-demos/>`_ to download them. The ``2.0-examples`` folder holds the ones written against this version of the framework.
 
 .. note::
 
@@ -101,4 +102,68 @@ If everything goes as planned, you'll be greeted by a screen similar to the one 
 
 .. image:: images/limekit.png
 
-You can now start learning how to use widgets.
+Your first project
+=====================
+
+A Limekit project is just a folder with a particular shape:
+
+.. code-block::
+
+   my-app/
+     app.json
+     scripts/
+       main.lua
+     images/
+     misc/
+
+Create ``app.json`` and mark the project as 2.0:
+
+.. code-block:: json
+
+   {
+     "project": {
+       "name": "My app",
+       "author": "You",
+       "version": "1.0",
+       "api": "2.0"
+     }
+   }
+
+Then put this in ``scripts/main.lua``:
+
+.. code-block:: lua
+   :linenos:
+
+   local ui = require("limekit.ui")
+
+   local window = ui.Window { title = "My app", size = { 400, 220 } }
+
+   local label = ui.Label("Nothing clicked yet")
+   label:setTextAlignment("center")
+
+   local button = ui.Button("Click me")
+   button:setOnClick(function()
+       label:setText("You clicked the button")
+   end)
+
+   local layout = ui.VLayout()
+   layout:setSpacing(10)
+   layout:setMargins(20, 20, 20, 20)
+   layout:addChild(label)
+   layout:addChild(button)
+
+   window:setLayout(layout)
+   window:show()
+
+Open the folder in Limer and press Run. You can also run it straight from a terminal::
+
+    $ python -m limekit path/to/my-app
+
+.. important::
+
+   The ``"api": "2.0"`` line matters. Without it, Limekit falls back to looking
+   for a ``require("limekit.…")`` call in your ``main.lua`` to decide which
+   engine to use. Declaring it explicitly is clearer and never guesses wrong.
+
+You can now move on to :doc:`Core concepts <concepts>`, which covers the few
+rules that apply to every widget in the framework.

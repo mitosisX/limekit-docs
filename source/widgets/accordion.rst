@@ -1,67 +1,57 @@
 Accordion
-###########
+############
 
-A powerful component designed to manage and display multiple tabs, each hosting distinct set of widgets or layouts but only one item can stay open at a time
-
-.. code-block:: lua
-
-  local accordion = Accordion()
-
-You can add a widget or a layout to the accordion using ``addChild(widget, label, icon: optional)`` or ``addLayout(layout, label, icon: optional)``, respectively. Take a look at the different code snippet below
-
-*Adding a widget*
+A stack of collapsible sections, one open at a time. It suits long forms and
+settings screens where showing everything at once would overwhelm.
 
 .. code-block:: lua
+  :linenos:
 
-  local button = Button('Click me')
-  accordion:addChild(button, 'All Buttons')
+  local ui = require("limekit.ui")
 
-  -- or otherwise with an icon
+  local accordion = ui.Accordion()
 
-  local button = Button('Click me')
-  accordion:addChild(button, 'All Buttons', images('icon.png'))
+  local accountLayout = ui.VLayout()
+  accountLayout:addChild(ui.Label("Email"))
+  accountLayout:addChild(ui.LineEdit())
 
-*Adding a layout*
+  accordion:addLayout(accountLayout, "Account")
 
-.. code-block:: lua
+  local privacyLayout = ui.VLayout()
+  privacyLayout:addChild(ui.CheckBox("Share usage data"))
 
-  local layout = VLayout()
-  local button = Button('Click me')
+  accordion:addLayout(privacyLayout, "Privacy")
 
-  layout:addChild(button)
-  accordion:addChild(layout, 'All Buttons')
-
-  -- or otherwise with an icon
-
-  local layout = VLayout()
-  local button = Button('Click me')
-
-  layout:addChild(button)
-  accordion:addChild(layout, 'All Buttons')
-
-*checkout* :doc:`Layout Managers </layouts>`
-
-Properties
+Sections
 ***************
 
-.. function:: addChild(widget, label, icon: optional)
-  
-  Adds a widget in a tab to the accordion with given a label, and icon if necessary
+.. function:: addChild(child, label, icon)
+  :no-index:
 
-.. function:: addLayout(layout, label, icon: optional)
-  
-  Adds a layout in a tab to the accordion with given a label, and icon if necessary
+  Adds a section holding a single widget. ``icon`` is optional.
 
-checkout :doc:`Using resources </user-resources>`
+.. function:: addLayout(layout, label, icon)
+  :no-index:
 
-.. function:: setToolTip(text)
+  Adds a section holding a whole layout. This is the usual one.
 
-  Enable text that appears when a mouse hovers on the tab
+.. function:: getCount()
+  :no-index:
 
-.. function:: getCurrentIndex()
+  How many sections there are.
 
-  Gets the current index of the visible tab
+.. function:: setCurrentIndex(index) / getCurrentIndex()
+  :no-index:
 
-.. function:: setCurrentIndex(index)
+  Which section is open. **Positions start at 1.**
 
-  Sets the index of the tab to be visible
+.. function:: setOnCurrentChange(callback)
+  :no-index:
+
+  Runs when a different section is opened.
+
+  .. code-block:: lua
+
+     accordion:setOnCurrentChange(function(sender)
+         print("opened section " .. sender:getCurrentIndex())
+     end)
