@@ -73,7 +73,8 @@ Events
 .. function:: setOnItemSelect(callback)
   :no-index:
 
-  Runs when the selected item changes.
+  Runs when the selected item changes. The handler receives the list, the
+  newly selected item and the previously selected one.
 
 .. function:: setOnItemDoubleClick(callback)
   :no-index:

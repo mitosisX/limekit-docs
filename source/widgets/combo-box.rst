@@ -46,10 +46,17 @@ Properties
 .. function:: setOnItemSelect(callback)
   :no-index:
 
-  Runs when the selection changes.
+  Runs when the selection changes. The handler receives the combo box and
+  the selected position, 1-based.
 
   .. code-block:: lua
 
-     country:setOnItemSelect(function(sender)
-         print("selected " .. sender:getText())
+     country:setOnItemSelect(function(sender, index)
+         print("selected " .. sender:getItemAt(index))
      end)
+
+  .. note::
+
+     When nothing is selected -- after ``clear()``, for instance -- the
+     position is ``0``, which is out of range for every 1-based method.
+     Check for it before passing it on.

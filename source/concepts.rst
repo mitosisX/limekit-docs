@@ -155,6 +155,16 @@ Rows, columns, tabs, list items, and every other index in Limekit start at
 Passing ``0`` is an error, and the message says so rather than quietly
 selecting the wrong cell.
 
+This holds for the values your event handlers receive too, not just the ones
+you pass in:
+
+.. code-block:: lua
+
+   table_:setOnCellClick(function(sender, row, column)
+       -- row and column are 1-based, so they go straight back in
+       print(sender:getCellItem(row, column):getText())
+   end)
+
 .. note::
 
    This was not true in 1.x -- some widgets counted from 0 and others from 1.

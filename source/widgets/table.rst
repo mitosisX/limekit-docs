@@ -174,20 +174,30 @@ Events
 .. function:: setOnCellClick(callback)
   :no-index:
 
-  Runs when a cell is clicked.
+  Runs when a cell is clicked. The handler receives the table, the row and
+  the column -- both 1-based, so they can be passed straight back into
+  ``getCellItem``.
+
+  .. code-block:: lua
+
+     sheet:setOnCellClick(function(sender, row, column)
+         print(sender:getCellItem(row, column):getText())
+     end)
 
 .. function:: setOnCellDoubleClick(callback)
   :no-index:
 
-  Runs when a cell is double-clicked.
+  Runs when a cell is double-clicked. Receives the table, the row and the
+  column, both 1-based.
 
 .. function:: setOnCellChange(callback)
   :no-index:
 
-  Runs when a cell's contents change.
+  Runs when a cell's contents change. Receives the table, the row and the
+  column, both 1-based.
 
   .. code-block:: lua
 
-     sheet:setOnCellChange(function(sender)
-         print("changed row " .. sender:getCurrentRow())
+     sheet:setOnCellChange(function(sender, row, column)
+         print("changed cell " .. row .. "," .. column)
      end)

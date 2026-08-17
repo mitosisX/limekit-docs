@@ -95,7 +95,15 @@ Events
 .. function:: setOnItemClick(callback)
   :no-index:
 
-  Runs when an item is clicked.
+  Runs when an item is clicked. The handler receives the tree, the item, and
+  the column that was clicked -- 1-based, so it can go straight into the
+  item's ``getText``.
+
+  .. code-block:: lua
+
+     tree:setOnItemClick(function(sender, item, column)
+         print(item:getText(column))
+     end)
 
 .. function:: setOnItemDoubleClick(callback)
   :no-index:
