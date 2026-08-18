@@ -74,16 +74,17 @@ Events
   :no-index:
 
   Runs when the selected item changes. The handler receives the list, the
-  newly selected item and the previously selected one.
+  selected item's text, and its row -- 1-based, so it goes straight back into
+  ``getItemAt``.
 
 .. function:: setOnItemDoubleClick(callback)
   :no-index:
 
   Runs when an item is double-clicked -- the usual way to "open" something in a
-  list.
+  list. Receives the list, the item's text, and its 1-based row.
 
   .. code-block:: lua
 
-     tasks:setOnItemDoubleClick(function(sender)
-         openTask(sender:getCurrentRow())
+     tasks:setOnItemDoubleClick(function(sender, text, row)
+         openTask(text)
      end)
