@@ -160,6 +160,11 @@ it was replaced rather than reproduced.
      - Change
      - Why
    * - :doc:`Modal </widgets/modal>`
+     - Constructor is ``Modal(title, parent)``, not ``Modal(parent, title)``
+     - Title first matches every other constructor -- ``Button("Save")``,
+       ``Label("Total:")``. Passing them the old way round raises rather than
+       misbehaving, but the error names QDialog, not the swap
+   * - :doc:`Modal </widgets/modal>`
      - ``show()`` no longer blocks; use ``open()`` for that
      - 1.x's ``show()`` called Qt's blocking modal loop, so it meant something completely different from every other widget's ``show()``
    * - :doc:`Image </widgets/image>`
