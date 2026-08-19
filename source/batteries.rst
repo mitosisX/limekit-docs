@@ -185,6 +185,31 @@ the background so your window stays responsive.
    updated from the main thread. To tell your interface something has happened,
    use a :ref:`Signal <signals>` -- that is exactly what it is for.
 
+   You no longer have to remember this on your own: once a thread has been
+   started, every widget setter checks which thread it is on and raises,
+   naming the property and the widget, instead of corrupting Qt's state and
+   crashing somewhere unrelated later.
+
+.. important::
+
+   **A thread is for one long call, not for a loop that reports progress.**
+
+   Limekit has a single Lua state shared by every thread, so while a worker is
+   running Lua no other Lua can run -- including your handlers and any Signal
+   the worker fires. The window keeps repainting, because that is Qt's own
+   code, but a ``relay()`` from inside a Lua loop does not reach the interface
+   until the worker finishes, at which point every update arrives at once.
+
+   Two things follow:
+
+   * relay **once, at the end**, to say the work is done -- that arrives
+     promptly, and is what a background thread is good for;
+   * for step-by-step progress, use a :ref:`Timer <timers>` instead. It runs
+     on the interface thread in short slices, so each step is drawn as it
+     happens.
+
+   The ``threads`` example in ``2.0-examples`` demonstrates both, side by side.
+
 .. function:: sys.Thread()
   :no-index:
 
@@ -201,10 +226,15 @@ the background so your window stays responsive.
 
    Begins running.
 
-.. function:: stop()
+.. function:: stop(msecs)
   :no-index:
 
-   Asks the thread to finish.
+   Asks the thread to finish, then waits for it -- up to ``msecs``, five
+   seconds by default.
+
+   It waits because a ``setOnThreadRun`` worker cannot be interrupted
+   part-way through its body. If you need it to give up early, check a flag
+   inside your own loop.
 
 .. function:: wait(msecs)
   :no-index:
@@ -219,7 +249,8 @@ the background so your window stays responsive.
 .. function:: sleep(seconds)
   :no-index:
 
-   Pauses the thread for a number of seconds.
+   Pauses the thread for a number of seconds. Fractions are allowed, so
+   ``worker:sleep(0.25)`` is a quarter of a second.
 
 .. _signals:
 
@@ -263,6 +294,8 @@ interface side.
   :no-index:
 
    Fires the signal. Safe to call from any thread.
+
+.. _timers:
 
 Timers
 --------

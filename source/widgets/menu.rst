@@ -31,6 +31,7 @@ A menu on its own does nothing -- put it somewhere:
 * on a :doc:`Menubar </widgets/menu-bar>` at the top of the window
 * on a :doc:`Button </widgets/button>` with ``setMenu``
 * on a :doc:`SysTray </batteries>` icon
+* wherever the user right-clicked, with ``popupAt``
 
 .. note::
 
@@ -62,6 +63,28 @@ Contents
   :no-index:
 
   Adds a dividing line to group related commands.
+
+Showing it
+***************
+
+.. function:: popupAt(widget, x, y)
+  :no-index:
+
+  Shows the menu at ``x``, ``y`` measured from ``widget``'s top-left corner --
+  which is exactly the pair a ``setOnContextMenu`` handler receives, so the two
+  fit together directly.
+
+  .. code-block:: lua
+
+     window:setOnContextMenu(function(sender, x, y)
+         local menu = ui.Menu()
+         menu:addMenuItem(ui.MenuItem("Cut"))
+         menu:addMenuItem(ui.MenuItem("Copy"))
+         menu:popupAt(sender, x, y)
+     end)
+
+  Building the menu inside the handler, rather than once up front, lets the
+  entries depend on what was actually clicked.
 
 Appearance
 ***************

@@ -62,6 +62,11 @@ Contents
 
   Attaches a :doc:`Menubar </widgets/menu-bar>` along the top.
 
+.. function:: setStatusbar(bar)
+  :no-index:
+
+  Attaches a :doc:`StatusBar </widgets/status-bar>` along the bottom.
+
 .. function:: addToolbar(toolbar, position)
   :no-index:
 
@@ -179,10 +184,16 @@ Events
 .. function:: setOnContextMenu(callback)
   :no-index:
 
-  Runs on a right click. Receives the window, ``x`` and ``y``.
+  Runs on a right click. Receives the window, ``x`` and ``y``, measured from
+  the window's top-left corner.
+
+  Those coordinates are what :doc:`Menu </widgets/menu>`'s ``popupAt`` wants,
+  so showing a context menu is two lines:
 
   .. code-block:: lua
 
      window:setOnContextMenu(function(sender, x, y)
-         print("right clicked at " .. x .. ", " .. y)
+         local menu = ui.Menu()
+         menu:addMenuItem(ui.MenuItem("Copy"))
+         menu:popupAt(sender, x, y)
      end)

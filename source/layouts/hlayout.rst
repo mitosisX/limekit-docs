@@ -50,6 +50,13 @@ Properties
 
   Adds a fixed gap of a given number of pixels.
 
+.. function:: addSpacer(spacer)
+  :no-index:
+
+  Adds a :doc:`Spacer </widgets/spacer>` -- a fixed gap you can build once and
+  reuse. A Spacer is a layout item rather than a widget, so ``addChild``
+  rejects it and this is the method that takes one.
+
 .. seealso::
 
   :doc:`VLayout </layouts/vlayout>` for a column, and

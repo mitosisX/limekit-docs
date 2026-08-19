@@ -39,16 +39,20 @@ Properties
 .. function:: setOnKeyPress(callback)
   :no-index:
 
-  Runs when a key is pressed while the container has focus.
+  Runs when a key is pressed while the container has focus. The handler
+  receives the container, the key's name -- ``"A"``, ``"Return"``, ``"F1"`` --
+  and the character it typed, which is an empty string for keys that produce
+  none.
 
   .. code-block:: lua
 
-     panel:setOnKeyPress(function(sender, event)
-         print("key pressed")
+     panel:setOnKeyPress(function(sender, key, text)
+         print(key, text)
      end)
 
-  .. important::
+  .. note::
 
-     Attaching this handler takes over key handling for the container. Widgets
-     inside it that expect to receive keys of their own -- text boxes in
-     particular -- will stop doing so.
+     Observing a key is not the same as consuming it: the handler runs and Qt
+     still processes the key as usual, so text boxes inside the container keep
+     working. In 1.x attaching this handler silently switched off default key
+     handling for everything inside.

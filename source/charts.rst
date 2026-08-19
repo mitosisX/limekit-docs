@@ -8,8 +8,8 @@ Charts
 
 Charts are built from three pieces:
 
-1. A **series** holds your data -- :ref:`LineChart <linechart>`,
-   :ref:`BarChart <barchart>` or :ref:`AreaChart <areachart>`.
+1. A **series** holds your data -- :ref:`LineChart <linechart>`, one of the
+   four :ref:`bar arrangements <barchart>`, or :ref:`AreaChart <areachart>`.
 2. A **Chart** collects one or more series, along with the title, legend and axes.
 3. A **ChartView** is the widget that displays it. This is the part you add to a layout.
 
@@ -146,13 +146,60 @@ Line charts
 
       line:setData({ {1, 10}, {2, 24}, {3, 18} })
 
+.. function:: attachAxis(axis)
+  :no-index:
+
+   Binds the series to an axis you added to the chart.
+
+   .. important::
+
+      Adding an axis to the chart is only half the job -- without this call
+      the series is drawn against Qt's own default axis, so the range and
+      title you set are quietly ignored. Every series needs it, once per axis.
+
+      .. code-block:: lua
+
+         graph:addAxis(x, "bottom")
+         graph:addAxis(y, "left")
+         line:attachAxis(x)
+         line:attachAxis(y)
+
 .. _barchart:
 
 Bar charts
 ------------
 
-A bar chart holds one or more **bar sets**. Each set is a named group of values
-drawn side by side -- one set per series you want to compare.
+A bar chart holds one or more **bar sets**. Each set is a named group of
+values -- one set per thing you want to compare.
+
+There are four bar series, and which one you pick decides what a reader can
+easily compare. They share exactly the same methods, so swapping one for
+another is a one-word change.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
+
+   * - Series
+     - Draws
+   * - ``chart.BarChart``
+     - Each set side by side within a category. Best for comparing sets against
+       each other.
+   * - ``chart.StackedBarChart``
+     - Each set piled on the one below, so a bar's height is the total. Best
+       when the total matters as much as the parts.
+   * - ``chart.PercentBarChart``
+     - Stacked, then scaled so every bar is full height. Sizes disappear and
+       what is left is each set's **share**.
+   * - ``chart.HorizontalBarChart``
+     - Side by side, running left to right. Worth reaching for when the
+       category labels are long enough to collide under a vertical axis.
+
+.. important::
+
+   ``HorizontalBarChart`` swaps the axes round with the bars: the
+   ``CategoryAxis`` goes on the ``left`` and the ``ValueAxis`` along the
+   ``bottom``.
 
 .. code-block:: lua
 
@@ -173,10 +220,17 @@ drawn side by side -- one set per series you want to compare.
    graph:addAxis(axis, "bottom")
    bars:attachAxis(axis)
 
-.. function:: chart.BarChart()
+Swapping the arrangement is one word:
+
+.. code-block:: lua
+
+   local bars = chart.StackedBarChart()     -- was chart.BarChart()
+
+.. function:: chart.BarChart() / chart.StackedBarChart() / chart.PercentBarChart() / chart.HorizontalBarChart()
   :no-index:
 
-   A series drawn as bars.
+   A series drawn as bars, in one of the four arrangements above. Every method
+   below is shared by all four.
 
 .. function:: append(barset)
   :no-index:
@@ -186,7 +240,36 @@ drawn side by side -- one set per series you want to compare.
 .. function:: attachAxis(axis)
   :no-index:
 
-   Attaches an axis to this series.
+   Binds the series to an axis you added to the chart. See the note under
+   :ref:`LineChart <linechart>` -- skipping it means your axes are ignored.
+
+.. function:: setBarWidth(width)
+  :no-index:
+
+   How much of each category slot the bars fill, from ``0`` to ``1``.
+
+.. function:: setLabelsVisible(visible)
+  :no-index:
+
+   Draws each bar's value on the bar itself. This is what makes a
+   ``PercentBarChart`` readable -- without labels you are eyeballing
+   proportions.
+
+.. function:: setLabelsFormat(text)
+  :no-index:
+
+   A format string for those labels, where ``@value`` stands for the number.
+
+   .. code-block:: lua
+
+      bars:setLabelsVisible(true)
+      bars:setLabelsFormat("@value%")
+
+.. function:: setLabelsPosition(position)
+  :no-index:
+
+   Where on the bar the label sits: ``center``, ``insideend``, ``insidebase``
+   or ``outsideend``. An unrecognised name raises and lists the valid ones.
 
 .. function:: chart.BarSet(title)
   :no-index:

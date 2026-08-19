@@ -12,7 +12,7 @@ indicators.
   local status = ui.StatusBar()
   status:setText("Ready")
 
-  window:setMainChild(status)
+  window:setStatusbar(status)
 
 Messages
 ***************

@@ -211,7 +211,18 @@ Folders and paths
 .. function:: fs.FileSystem.walkDir(path, show_hidden)
   :no-index:
 
-   Walks a folder recursively. ``show_hidden`` defaults to ``false``.
+   One level of a folder, folders first. Each entry is a table with ``name``,
+   ``path`` and ``is_dir`` -- which is what a file tree needs to draw a row and
+   decide whether it can be expanded. ``show_hidden`` defaults to ``false``.
+
+   Despite the name it does not recurse; call it again on any entry whose
+   ``is_dir`` is true.
+
+   .. code-block:: lua
+
+      for _, entry in ipairs(fs.FileSystem.walkDir(folder)) do
+          print(entry.name, entry.is_dir and "folder" or "file")
+      end
 
 .. function:: fs.FileSystem.joinPaths(...)
   :no-index:

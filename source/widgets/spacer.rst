@@ -9,13 +9,21 @@ An invisible block of a fixed size, used to push widgets apart.
 
   local layout = ui.HLayout()
   layout:addChild(ui.Button("Back"))
-  layout:addChild(ui.Spacer(40, 0))
+  layout:addSpacer(ui.Spacer(40, 0))
   layout:addChild(ui.Button("Next"))
 
 .. function:: ui.Spacer(width, height)
   :no-index:
 
   Creates a gap of a given size.
+
+.. important::
+
+  Add a Spacer with the layout's ``addSpacer``, not ``addChild``. A Spacer is
+  not a widget -- it is a layout item -- so ``addChild`` rejects it.
+
+  For a one-off gap you do not need to keep hold of, ``addSpacing(40)`` says
+  the same thing in one call.
 
 .. note::
 
