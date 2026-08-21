@@ -249,6 +249,66 @@ Folders and paths
 
    The folder containing the path.
 
+Watching for changes
+----------------------
+
+``sys.FileWatcher`` tells you when files or folders change on disk.
+
+.. code-block:: lua
+
+   local sys = require("limekit.sys")
+
+   local watcher = sys.FileWatcher()
+   watcher:setOnChange(function(paths)
+      print("changed: " .. table.concat(paths, ", "))
+   end)
+   watcher:watchTree(projectFolder)
+
+Qt's own watcher has three habits this one does not. It is **not
+recursive**, so watching a folder says nothing about a file created inside
+a subfolder — ``watchTree`` adds every folder beneath the root, and picks up
+folders created later, because otherwise the first file inside a new folder
+is the last one you hear about. It is **chatty**: saving one file in an
+editor commonly produces several events, so changes here are collected for a
+moment and your handler is called **once**. And it watches everything you
+give it, so noise directories — ``.git``, ``node_modules``, ``__pycache__``
+and the like — are skipped.
+
+Keep a reference to the watcher. One held only in a local stops watching
+when that local goes out of scope.
+
+.. function:: sys.FileWatcher()
+  :no-index:
+
+   Creates a watcher. Nothing is watched until you say so.
+
+.. function:: watch(path)
+  :no-index:
+
+   Watches one file or folder. Returns ``false`` if it does not exist.
+
+.. function:: watchTree(root)
+  :no-index:
+
+   Watches a folder and every folder beneath it. Returns how many were
+   added.
+
+.. function:: setOnChange(handler)
+  :no-index:
+
+   Called once, shortly after a change, with a table of the paths that
+   changed.
+
+.. function:: unwatch(path) / clear()
+  :no-index:
+
+   Stops watching one path, or all of them.
+
+.. function:: getPaths() / getCount()
+  :no-index:
+
+   What is being watched.
+
 The system
 ------------
 
