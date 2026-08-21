@@ -63,6 +63,13 @@ Headers and columns
 
   Hides the header row, which suits a simple one-column tree.
 
+.. function:: setColumnCount(columns) / getColumnCount()
+  :no-index:
+
+  How many columns the tree has. ``setHeaderLabels`` already sets this from
+  the number of labels you give it; use this when you want a column with no
+  heading — somewhere to keep an id alongside each row, say.
+
 .. function:: setColumnWidth(column, width)
   :no-index:
 
