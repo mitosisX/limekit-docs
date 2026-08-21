@@ -301,6 +301,29 @@ Machine information
 
       local desktop = sys.System.getStandardPath("desktop")
 
+Opening files and links
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. function:: sys.System.openPath(path)
+  :no-index:
+
+   Hands a file, folder or URL to the desktop and lets it pick the
+   application -- the same thing double-clicking it in a file manager does.
+   Returns ``true`` if the desktop accepted it.
+
+   A path that exists on disk is opened as a local file; anything else is
+   treated as a URL, so both forms below work.
+
+   .. code-block:: lua
+
+      sys.System.openPath(fs.FileSystem.joinPaths(folder, "notes.txt"))
+      sys.System.openPath("https://limekit.dev")
+
+   Use this rather than ``sys.System.execute`` to launch something for the
+   user. ``execute`` waits for the command to finish and gives up after
+   thirty seconds, so opening an editor with it would freeze your interface
+   until the editor was closed again.
+
 Clipboard
 ~~~~~~~~~~
 
