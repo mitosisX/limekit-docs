@@ -72,6 +72,33 @@ Moving between pages
 
   Slides to a particular page.
 
+.. function:: isSliding()
+  :no-index:
+
+  Whether a slide is still animating.
+
+  A slide already in flight **discards** any further request, and
+  ``getCurrentIndex`` reports where the widget is heading rather than where
+  it is. Code that flips between two pages therefore cannot tell a click
+  that worked from one that was thrown away — unless it asks first.
+
+  .. code-block:: lua
+
+     switchButton:setOnClick(function()
+        if slides:isSliding() then return end
+
+        if slides:getCurrentIndex() == 1 then
+           slides:slideNext()
+           switchButton:setText("Back")
+        else
+           slides:slidePrev()
+           switchButton:setText("Forward")
+        end
+     end)
+
+  Without the first line, a second click during the animation relabels the
+  button for a page it never reached.
+
 Animation
 ***************
 
