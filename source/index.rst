@@ -154,6 +154,7 @@ visit `buymeacoffee.com/omegamsiska <https://www.buymeacoffee.com/omegamsiska>`_
    :hidden:
 
    getting-started
+   limer
    concepts
    widgets
    widget-items
