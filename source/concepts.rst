@@ -73,9 +73,11 @@ Autocomplete in your editor
 -----------------------------
 
 Because every class is registered in one place, Limekit ships type stubs for
-the `Lua Language Server <https://luals.github.io/>`_. Point your editor's
-``Lua.workspace.library`` setting at the framework's ``runtime/lua/stubs``
-folder and you get completion and signatures for every widget as you type.
+the `Lua Language Server <https://luals.github.io/>`_. Limer writes a
+``.luarc.json`` into every project it opens, pointing at them, so in VS Code
+(with the *Lua* extension by sumneko) or Neovim you get completion, signatures
+and docs for every widget as you type -- and typos such as
+``button:setTxt`` are underlined -- with nothing to set up.
 
 Creating widgets
 ------------------

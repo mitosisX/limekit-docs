@@ -82,7 +82,9 @@ With a project open
 - **Home Page** (toolbar) switches back to the home page; on the home page the
   same button reads *My Project* and switches back.
 
-You write the Lua in your own editor. Press **Run** -- in the toolbar, in the
+You write the Lua in your own editor. Limer puts a ``.luarc.json`` in the
+project, so VS Code -- with the *Lua* extension by sumneko installed --
+completes the Limekit API and underlines typos straight away. Press **Run** -- in the toolbar, in the
 Application tab, or with **Ctrl+R** -- to start the app.
 
 
