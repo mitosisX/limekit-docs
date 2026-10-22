@@ -53,12 +53,15 @@ global:
    local ui = require("limekit.ui")
    local button = ui.Button("Save")
 
-I get "module 'limekit.ui' not found"
----------------------------------------
+Limer says my project "was made for Limekit 1.x"
+--------------------------------------------------
 
-Your project is being run by the 1.x engine, which has no module system. Add
-``"api": "2.0"`` to the ``project`` block of your ``app.json`` -- see
-:doc:`Core concepts <concepts>`.
+Limer could not tell the project is a 2.0 one: its ``app.json`` has no ``api``
+key and ``scripts/main.lua`` requires no ``limekit`` module. If it is a 2.0
+project, add ``"api": "2.0"`` to ``app.json`` -- see
+:doc:`Core concepts <concepts>`. If it really is a 1.x app, the
+`Limer 1.x release <https://github.com/mitosisX/Limer-Limekit/releases>`__ still runs it, or see
+:doc:`Migrating from 1.x <migrating>` to move it across.
 
 Why does my method call say it takes no arguments?
 ----------------------------------------------------
@@ -168,9 +171,9 @@ Migrating
 Do I have to migrate my 1.x app?
 ----------------------------------
 
-No. Limekit ships both engines and picks one per project, so 1.x apps keep
-running untouched. Migrate when you want the module system, the error guard and
-consistent indexing.
+To run it in this version of Limer, yes: the 1.x engine has been retired.
+The :doc:`migration guide <migrating>` covers what changes. Until then, the
+`Limer 1.x release <https://github.com/mitosisX/Limer-Limekit/releases>`_ still runs it as it is.
 
 What breaks when I migrate?
 -----------------------------

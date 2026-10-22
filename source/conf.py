@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "limekit docs"
-copyright = "2026, Take bytes"
+copyright = "2026, Naveto Tech"
 author = "Omega Msiska"
 release = "2.0"
 

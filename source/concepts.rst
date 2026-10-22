@@ -229,8 +229,7 @@ A Limekit project is a folder:
 Marking a project as 2.0
 --------------------------
 
-Limekit ships both the 1.x and 2.0 engines and picks the right one per project.
-It works out which you want in two ways:
+Limekit recognises a 2.0 project in two ways:
 
 1. **You tell it.** Add an ``api`` key to ``app.json``. This always wins:
 
@@ -247,9 +246,10 @@ It works out which you want in two ways:
 2. **It looks at your code.** If ``scripts/main.lua`` contains a
    ``require("limekit.…")`` call, the project is treated as 2.0.
 
-Anything else runs on the 1.x engine, which is why every existing project keeps
-working without being touched. Declaring ``api`` explicitly is the more
-predictable of the two, and is recommended for new projects.
+Anything else is taken to be a Limekit 1.x project. The 1.x engine has been
+retired, so Limer recognises such a project and says so instead of running it
+-- see :doc:`Migrating from 1.x <migrating>`. Declaring ``api`` explicitly is
+the more predictable of the two, and is recommended for new projects.
 
 .. note::
 

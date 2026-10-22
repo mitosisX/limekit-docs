@@ -14,7 +14,7 @@ What's Limekit?
 
 *Limekit* is a framework for building desktop applications using the `lua <https://www.lua.org/>`_ language without the need for HTML and CSS, allowing developers to maintain one lua codebase and create cross-platform apps that work on ``Windows``, ``macOS``, and ``Linux``.
 
-~ It is being developed by a company called :mod:`Take bytes`, with :mod:`Omega Msiska` as the lead developer on this project.
+~ It is being developed by a company called :mod:`Naveto Tech`, with :mod:`Omega Msiska` as the lead developer on this project.
 
 Key Features:
 

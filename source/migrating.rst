@@ -6,9 +6,14 @@ Migrating from 1.x
     :local:
     :backlinks: top
 
-Nothing forces you to migrate. Limekit ships both engines and picks one per
-project, so a 1.x app keeps running exactly as it did. This page is for when
-you decide to move an app across.
+Limekit 2.0 no longer includes the 1.x engine, so a 1.x app has to be moved
+across before the current Limer will run it. Limer recognises a 1.x project
+and says so rather than running it. This page covers what changes.
+
+.. note::
+
+   Not ready to move it? The `Limer 1.x release <https://github.com/mitosisX/Limer-Limekit/releases>`_ still runs 1.x apps
+   exactly as they are.
 
 Start here
 ------------

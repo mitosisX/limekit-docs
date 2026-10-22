@@ -19,10 +19,10 @@ Let's get you started!
    This documentation covers **Limekit 2.0**, which introduces a module system, a
    uniform error guard, and consistent 1-based indexing.
 
-   If you have an app written for Limekit 1.x, it keeps running unchanged --
-   Limer detects the version of every project and launches it on the matching
-   engine. When you are ready to move it across, see
-   :doc:`Migrating from 1.x <migrating>`.
+   If you have an app written for Limekit 1.x: the 1.x engine has been
+   retired, so Limer recognises such a project and tells you rather than
+   running it. The `Limer 1.x release <https://github.com/mitosisX/Limer-Limekit/releases>`_ still runs it; to move it
+   across, see :doc:`Migrating from 1.x <migrating>`.
 
 Your first app, in full:
 
