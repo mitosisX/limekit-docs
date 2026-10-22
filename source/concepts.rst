@@ -261,8 +261,7 @@ the more predictable of the two, and is recommended for new projects.
 Running your app
 ------------------
 
-Press Run in :mod:`Limer`, or from a terminal:
-
-.. code-block:: console
-
-    $ python -m limekit path/to/my-app
+Press **Run** in :mod:`Limer` (**Ctrl+R**), or the ▶ Run button in VS Code
+with `Limekit for VS Code <https://marketplace.visualstudio.com/items?itemName=OmegaMsiska.limekit-vscode>`_
+(**Ctrl+F5**). Both run it on the Python and Qt inside Limer, and show its
+output and errors.

@@ -13,15 +13,18 @@ dragging widgets, and builds the finished app into a program you can hand to
 anyone.
 
 Limer is one download with everything inside it -- Python, Qt and the Limekit
-framework. Get ``Limer-2.0-windows.zip`` from the
-`Limer releases <https://github.com/mitosisX/Limer-Limekit/releases>`_, unzip
-it anywhere and run ``Limer.exe``. There is nothing else to install.
+framework -- for Windows, macOS (Apple silicon and Intel) and Linux. Get the
+file for your computer from the
+`latest release <https://github.com/mitosisX/Limer-Limekit/releases/latest>`_,
+unzip it anywhere and run Limer. There is nothing else to install;
+:doc:`Installation <getting-started>` has the details for each system.
 
 .. note::
 
-   The download is not code-signed yet, so the first time you run it Windows
-   may say *"Windows protected your PC"*. Click **More info**, then
-   **Run anyway**.
+   The downloads are not code-signed yet, so the first time you run Limer,
+   Windows may say *"Windows protected your PC"* (click **More info**, then
+   **Run anyway**) and macOS asks you to confirm (right-click **Limer** →
+   **Open**).
 
 
 The home page
@@ -225,8 +228,10 @@ click **Build**. About a minute later you have your app:
   give away.
 
 The people you give your app to install nothing -- no Python, no Limekit.
-Like Limer itself, an app you build is not code-signed, so Windows may show
-the same *"Windows protected your PC"* message the first time it runs.
+Build makes an app for the system you are on: build on Windows for Windows
+users, on a Mac for Mac users, on Linux for Linux users. Like Limer itself,
+an app you build is not code-signed, so the system asks for the same
+confirmation the first time it runs.
 
 
 Coming from Limekit 1.x
