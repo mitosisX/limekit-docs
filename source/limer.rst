@@ -233,9 +233,7 @@ Coming from Limekit 1.x
 =========================
 
 Limer 2.0 runs Limekit 2.0 projects. Open a 1.x project and Limer tells you
-so instead of running it. The
-`Limekit 1.0 release <https://github.com/mitosisX/Limer-Limekit/releases/tag/limekit1.0>`_
-still runs 1.x projects as they are; to move one across, see
+so instead of running it. To move one across, see
 :doc:`Migrating from 1.x <migrating>`.
 
 

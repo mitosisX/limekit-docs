@@ -10,11 +10,6 @@ Limekit 2.0 no longer includes the 1.x engine, so a 1.x app has to be moved
 across before the current Limer will run it. Limer recognises a 1.x project
 and says so rather than running it. This page covers what changes.
 
-.. note::
-
-   Not ready to move it? The `Limer 1.x release <https://github.com/mitosisX/Limer-Limekit/releases>`_ still runs 1.x apps
-   exactly as they are.
-
 Start here
 ------------
 

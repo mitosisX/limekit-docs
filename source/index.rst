@@ -21,8 +21,7 @@ Let's get you started!
 
    If you have an app written for Limekit 1.x: the 1.x engine has been
    retired, so Limer recognises such a project and tells you rather than
-   running it. The `Limer 1.x release <https://github.com/mitosisX/Limer-Limekit/releases>`_ still runs it; to move it
-   across, see :doc:`Migrating from 1.x <migrating>`.
+   running it. To move it across, see :doc:`Migrating from 1.x <migrating>`.
 
 Your first app, in full:
 

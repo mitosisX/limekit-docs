@@ -59,8 +59,7 @@ Limer says my project "was made for Limekit 1.x"
 Limer could not tell the project is a 2.0 one: its ``app.json`` has no ``api``
 key and ``scripts/main.lua`` requires no ``limekit`` module. If it is a 2.0
 project, add ``"api": "2.0"`` to ``app.json`` -- see
-:doc:`Core concepts <concepts>`. If it really is a 1.x app, the
-`Limer 1.x release <https://github.com/mitosisX/Limer-Limekit/releases>`__ still runs it, or see
+:doc:`Core concepts <concepts>`. If it really is a 1.x app, see
 :doc:`Migrating from 1.x <migrating>` to move it across.
 
 Why does my method call say it takes no arguments?
@@ -172,8 +171,7 @@ Do I have to migrate my 1.x app?
 ----------------------------------
 
 To run it in this version of Limer, yes: the 1.x engine has been retired.
-The :doc:`migration guide <migrating>` covers what changes. Until then, the
-`Limer 1.x release <https://github.com/mitosisX/Limer-Limekit/releases>`_ still runs it as it is.
+The :doc:`migration guide <migrating>` covers what changes.
 
 What breaks when I migrate?
 -----------------------------
