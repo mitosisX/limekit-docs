@@ -18,8 +18,8 @@ contact = "omegamsiskah@gmail.com"
 # `python -m limekit` against any project and the module tables it installs
 # are the source of truth.
 rst_epilog = """
-.. |widgets| replace:: 49
-.. |classes| replace:: 80
+.. |widgets| replace:: 46
+.. |classes| replace:: 89
 """
 
 # pygment_style = "sphinx"

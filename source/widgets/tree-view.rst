@@ -1,6 +1,11 @@
 TreeView
 ###########
 
+.. note::
+
+   ``ui.TreeWidget`` is another name for ``ui.TreeView`` -- the same widget.
+
+
 A hierarchy of items that can be expanded and collapsed -- file browsers,
 outlines, category trees.
 

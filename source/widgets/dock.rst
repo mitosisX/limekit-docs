@@ -1,6 +1,11 @@
 Dock
 ###########
 
+.. note::
+
+   ``ui.Dockable`` is another name for ``ui.Dock`` -- the same widget.
+
+
 A panel attached to an edge of the window that the user can move, float as a
 separate window, or close. Tool palettes and side panels are the usual use.
 

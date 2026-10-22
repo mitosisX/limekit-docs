@@ -93,10 +93,11 @@ Text
 
   Whether the value is printed on the bar at all.
 
-.. function:: setValuePosition(position) / getValuePosition()
+.. function:: getValuePosition()
   :no-index:
 
-  Where on the bar the value is printed.
+  Where the handle is along the bar, in pixels from the left edge. Read-only:
+  set the value with ``setValue`` and the handle follows.
 
 .. function:: setFont(font) / getFont()
   :no-index:
