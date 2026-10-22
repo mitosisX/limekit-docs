@@ -4,6 +4,15 @@ Installation
 
 .. highlight:: console
 
+.. tip::
+
+   **Just want to build apps? Download Limer — no Python needed.**
+
+   `Limer <https://github.com/mitosisX/Limer-Limekit/releases>`_ is one
+   download with everything inside it: unzip it, run ``Limer.exe``, and start
+   writing Lua. The Python steps below are only for working on the Limekit
+   framework itself.
+
 .. contents:: Content
     :depth: 1
     :local:
